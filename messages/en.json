@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "clients": "Clients",
+    "career": "Career",
+    "contact": "Contact",
+    "cta": "Start a Project"
+  },
+  "hero": {
+    "label": "Kuwait's IT Partner",
+    "line1": "We architect",
+    "line2": "digital trust.",
+    "line3": "for Kuwait.",
+    "sub": "Cybersecurity · Cloud · AI · IT Consulting",
+    "btn1": "Explore Services",
+    "btn2": "View Our Work",
+    "stat1": "40+ Years",
+    "stat2": "500+ Experts",
+    "stat3": "100% Local"
+  },
+  "stats": {
+    "s1num": "40+", "s1lbl": "Years of Legacy",
+    "s2num": "500+", "s2lbl": "Certified Professionals",
+    "s3num": "25+", "s3lbl": "Years IT Focus",
+    "s4num": "100%", "s4lbl": "Local Delivery"
+  },
+  "about": {
+    "kicker": "Who We Are",
+    "title": "Partners & Committers to Success.",
+    "body": "Masarat Technologies is an Information Technology Solutions & Services provider based in Kuwait. Our founders bring more than 40 years of experience in the field.",
+    "link": "Learn More About Us"
+  },
+  "services": {
+    "kicker": "What We Do",
+    "title": "Specializations.",
+    "body": "We provide the mission-critical pillars of digital transformation. From national cybersecurity to sovereign cloud infrastructure.",
+    "s1": "Cybersecurity",
+    "s2": "Cloud Engineering",
+    "s3": "IT Consulting",
+    "link": "Learn More"
+  },
+  "footer": {
+    "copy": "© 2026 Masarat Technologies · Kuwait",
+    "tagline": "Architecting Digital Trust & Enterprise Intelligence"
+  },
+  "contact": {
+    "title": "Advisory.",
+    "body": "Connect with our strategic consultants to architect your institution's digital future."
+  },
+  "compliance": {
+    "kicker": "Compliance",
+    "title": "Regulatory excellence.",
+    "c1": "Quality Management Systems",
+    "c2": "Information Security Management",
+    "c3": "IT Service Management"
+  },
+  "process": {
+    "kicker": "Methodology",
+    "title": "A process built on precision.",
+    "p1t": "Discovery & Audit",
+    "p1d": "We analyze your current infrastructure to identify critical gaps and opportunities for optimization.",
+    "p2t": "Architecture Design",
+    "p2d": "Crafting a digital blueprint that balances ironclad security with enterprise-grade performance.",
+    "p3t": "Deployment & Integration",
+    "p3d": "Seamless execution with zero-downtime philosophy for mission-critical systems.",
+    "p4t": "Managed Support",
+    "p4d": "Continuous monitoring and proactive intelligence to ensure your trust remains unbroken."
+  }
+}

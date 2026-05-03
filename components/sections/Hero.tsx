@@ -156,7 +156,7 @@ export default function Hero() {
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className={cn(
-                    "text-6xl md:text-[80px] tracking-tighter leading-[1.05] font-outfit",
+                    "text-5xl sm:text-6xl md:text-[80px] tracking-tighter leading-[1.05] font-outfit",
                     line.color
                   )}
                   style={{ fontWeight: line.weight }}

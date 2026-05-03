@@ -18,9 +18,13 @@ export default function Navbar() {
   const { t, isRTL } = useLanguage();
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
-
-  // Resolved inline bg — bypasses iOS Safari CSS variable rendering bugs
   const menuBg = isDark ? "#0B1221" : "#FFFFFF";
+
+  // Only the homepage has a dark hero
+  const isHomepage = pathname === "/" || pathname === "";
+  const isAtTop = !isScrolled;
+  // Navbar is over dark background only when on homepage AND at top
+  const isOverDark = isHomepage && isAtTop;
 
   const navLinks = [
     { name: t("nav.services"), href: "/services" },
@@ -33,42 +37,40 @@ export default function Navbar() {
     setIsScrolled(latest > 50);
   });
 
-  const isAtTop = !isScrolled;
-  const isHeroDark = true;
-
   const linkColor = (isActive: boolean) => {
-    if (isAtTop && isHeroDark) return isActive ? "text-white" : "text-white/80 hover:text-white";
+    if (isOverDark) return isActive ? "text-white" : "text-white/80 hover:text-white";
     if (isActive) return "text-[#2563EB] dark:text-[#60A5FA]";
     return "text-[#6B6B6B] dark:text-[#A1A1A6] hover:text-[#1d1d1f] dark:hover:text-white";
   };
 
-  const ctaStyle = (isAtTop && isHeroDark)
+  const ctaStyle = isOverDark
     ? "bg-white text-[#1B3A6B] hover:bg-[#F5F5F7]"
     : "bg-[#1d1d1f] text-white dark:bg-white dark:text-[#1B3A6B] dark:hover:bg-[#F5F5F7]";
+
+  // Hamburger icon: white only when over dark hero, otherwise always dark (or white in dark mode)
+  const hamburgerColor = isOverDark ? "#FFFFFF" : (isDark ? "#FFFFFF" : "#1d1d1f");
 
   return (
     <>
       <nav
-        dir={isRTL ? "rtl" : "ltr"}
         className={cn(
-          "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex items-center justify-center w-full",
-          isScrolled 
-            ? "bg-white/98 dark:bg-[#0B1221]/98 backdrop-blur-[24px] border-b-[0.5px] border-[#E5E5EA] dark:border-[#1E3150] h-[70px] md:h-[100px]" 
-            : "bg-white/10 dark:bg-black/20 backdrop-blur-md md:bg-transparent h-[80px] md:h-[130px]"
+          "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 w-full",
+          isScrolled
+            ? "bg-white/95 dark:bg-[#0B1221]/95 backdrop-blur-[24px] border-b-[0.5px] border-[#E5E5EA] dark:border-[#1E3150] h-[70px] md:h-[100px]"
+            // Always transparent on top, even on non-homepage
+            : "bg-transparent h-[80px] md:h-[130px]"
         )}
       >
-        <div className={cn(
-          "container max-w-7xl px-6 flex items-center justify-between h-full w-full",
-          isRTL && "flex-row-reverse"
-        )}>
-          {/* Logo — always on correct side */}
-          <Link 
-            href="/" 
-            className="flex items-center flex-shrink-0 z-10"
+        <div className="container max-w-7xl px-5 flex items-center justify-between h-full w-full">
+
+          {/* ── Logo ── */}
+          <Link
+            href="/"
+            className="flex items-center flex-shrink-0"
             onClick={() => setMobileMenuOpen(false)}
           >
-            {isAtTop ? (
-              <div className={cn("flex items-center gap-2", isRTL && "flex-row-reverse")}>
+            {isOverDark ? (
+              <div className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded-lg overflow-hidden bg-transparent">
                   <img
                     src="/images/Masarat Logo.png"
@@ -76,13 +78,12 @@ export default function Navbar() {
                     className="w-full h-full object-cover scale-[2.2] translate-y-[-10%]"
                   />
                 </div>
-                <span className="text-white font-bold text-[24px] tracking-[-0.5px]">
-                  Masarat
-                  <span className="text-[#2563EB]">.</span>
+                <span className="text-white font-bold text-[22px] tracking-[-0.5px]">
+                  Masarat<span className="text-[#2563EB]">.</span>
                 </span>
               </div>
             ) : (
-              <div className="relative w-[180px] h-[60px]">
+              <div className="relative w-[160px] h-[54px]">
                 <img
                   src="/images/Masarat Logo.png"
                   alt="Masarat Technologies"
@@ -92,11 +93,8 @@ export default function Navbar() {
             )}
           </Link>
 
-          {/* Desktop Links — Hidden on Mobile */}
-          <div className={cn(
-            "hidden md:flex items-center gap-8",
-            isRTL && "flex-row-reverse"
-          )}>
+          {/* ── Desktop links (hidden on mobile) ── */}
+          <div className="hidden md:flex items-center gap-8">
             <div className={cn("flex items-center gap-8", isRTL && "flex-row-reverse")}>
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
@@ -104,158 +102,207 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={cn(
-                      "text-sm font-medium transition-colors duration-500",
-                      linkColor(isActive)
-                    )}
+                    className={cn("text-sm font-medium transition-colors duration-500", linkColor(isActive))}
                   >
                     {link.name}
                   </Link>
                 );
               })}
             </div>
-            
             <div className={cn("flex items-center gap-4", isRTL && "flex-row-reverse")}>
               <LanguageToggle />
               <ThemeToggle />
-              
               <Link
                 href="/contact"
-                className={cn(
-                  "px-5 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-md shadow-brand-blue/20",
-                  ctaStyle
-                )}
+                className={cn("px-5 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-md shadow-brand-blue/20", ctaStyle)}
               >
                 {t("nav.cta")}
               </Link>
             </div>
           </div>
 
-          {/* Mobile Right Controls — Includes Theme/Lang and Hamburger */}
-          <div className={cn(
-            "flex md:hidden items-center gap-2 flex-shrink-0",
-            isRTL && "flex-row-reverse"
-          )}>
+          {/* ── Mobile controls ── */}
+          <div className="flex md:hidden items-center gap-1 flex-shrink-0">
             <ThemeToggle />
             <LanguageToggle />
-            
             <button
-              className={cn(
-                "flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 relative",
-                (isAtTop && isHeroDark) ? "text-white" : "text-[#1d1d1f] dark:text-white",
-                "hover:bg-black/5 dark:hover:bg-white/5"
-              )}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open menu"
+              style={{ color: hamburgerColor }}
+              className="flex items-center justify-center w-10 h-10 rounded-xl"
             >
               <Menu size={24} />
             </button>
           </div>
+
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay — Optimized for RTL */}
+      {/* ── Mobile Menu Overlay ── 
+          Uses 100% inline styles to avoid iOS Safari CSS class issues.
+          No x/y animation — pure opacity to prevent half-panel appearance in RTL.
+      */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            key="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className={cn(
-              "fixed z-[999] md:hidden flex flex-col px-6 pb-8 shadow-2xl",
-              isRTL && "text-right"
-            )}
+            transition={{ duration: 0.2 }}
             style={{
+              position: "fixed",
               top: 0,
               left: 0,
               right: 0,
               bottom: 0,
-              width: "100%",
-              height: "100dvh",
+              width: "100vw",
+              height: "100vh",
+              zIndex: 9999,
               backgroundColor: menuBg,
-              touchAction: "none",
+              overflowY: "auto",
+              display: "flex",
+              flexDirection: "column",
+              padding: "0 20px 32px 20px",
+              direction: isRTL ? "rtl" : "ltr",
             }}
-            dir={isRTL ? "rtl" : "ltr"}
           >
-            {/* Header in Overlay */}
-            <div className={cn(
-              "flex items-center justify-between h-[80px] w-full mb-8",
-              isRTL && "flex-row-reverse"
-            )}>
-              <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
-                <div className="relative w-[150px] h-[50px]">
-                  <img
-                    src="/images/Masarat Logo.png"
-                    alt="Masarat Technologies"
-                    className="w-full h-full object-contain object-left dark:invert dark:brightness-200"
-                  />
-                </div>
+            {/* Overlay Header */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                height: "72px",
+                width: "100%",
+              }}
+            >
+              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                <img
+                  src="/images/Masarat Logo.png"
+                  alt="Masarat"
+                  style={{
+                    width: "130px",
+                    height: "44px",
+                    objectFit: "contain",
+                    objectPosition: isRTL ? "right" : "left",
+                    filter: isDark ? "invert(1) brightness(2)" : "none",
+                  }}
+                />
               </Link>
-              <button 
+              <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-black/5 dark:bg-white/5"
+                aria-label="Close menu"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "12px",
+                  border: "none",
+                  cursor: "pointer",
+                  backgroundColor: isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)",
+                  color: isDark ? "#FFFFFF" : "#1d1d1f",
+                  flexShrink: 0,
+                }}
               >
-                <X size={24} className="text-[#1d1d1f] dark:text-white" />
+                <X size={20} />
               </button>
             </div>
 
             {/* Nav Links */}
-            <nav className={cn(
-              "flex flex-col gap-2 mt-4",
-              isRTL && "items-end"
-            )}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
+                marginTop: "16px",
+              }}
+            >
               {navLinks.map((link, i) => (
-                <motion.div 
-                  key={link.name} 
-                  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 + 0.2 }}
-                  className="w-full"
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: i * 0.04 + 0.1 }}
                 >
                   <Link
                     href={link.href}
-                    className={cn(
-                      "block py-4 px-4 text-4xl font-bold font-outfit transition-all rounded-2xl",
-                      pathname === link.href ? "text-[#2563EB] dark:text-[#60A5FA] bg-blue-50 dark:bg-blue-600/10" : "text-[#1d1d1f] dark:text-white hover:bg-black/5 dark:hover:bg-white/5",
-                      isRTL ? "text-right" : "text-left"
-                    )}
                     onClick={() => setMobileMenuOpen(false)}
+                    style={{
+                      display: "block",
+                      width: "100%",
+                      padding: "14px 12px",
+                      fontSize: "34px",
+                      fontWeight: 700,
+                      lineHeight: 1.1,
+                      color: pathname === link.href
+                        ? "#2563EB"
+                        : (isDark ? "#F5F5F7" : "#1d1d1f"),
+                      textDecoration: "none",
+                      textAlign: isRTL ? "right" : "left",
+                      borderRadius: "16px",
+                      backgroundColor: pathname === link.href
+                        ? (isDark ? "rgba(37,99,235,0.12)" : "rgba(37,99,235,0.07)")
+                        : "transparent",
+                    }}
                   >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
-            </nav>
-            
-            <div className="my-8 border-t border-[#E5E5EA] dark:border-[#1E3150]" />
-
-            {/* Bottom Row */}
-            <div className={cn(
-              "flex items-center gap-4 mb-8",
-              isRTL ? "flex-row-reverse justify-end" : "flex-row justify-start"
-            )}>
-              <ThemeToggle />
-              <LanguageToggle />
-              <span className="text-sm font-medium text-brand-muted dark:text-white/40 px-2">
-                {isRTL ? "الإعدادات" : "Settings"}
-              </span>
             </div>
 
-            {/* Full Width CTA */}
+            {/* Divider */}
+            <div
+              style={{
+                height: "1px",
+                backgroundColor: isDark ? "#1E3150" : "#E5E5EA",
+                margin: "20px 0",
+              }}
+            />
+
+            {/* Settings Row */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "16px",
+                justifyContent: isRTL ? "flex-end" : "flex-start",
+              }}
+            >
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
+
+            {/* CTA Button */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
             >
               <Link
                 href="/contact"
-                className="block w-full bg-[#2563EB] text-white py-5 rounded-3xl text-xl font-bold shadow-xl shadow-blue-600/20 text-center active:scale-[0.98] transition-all"
                 onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  backgroundColor: "#2563EB",
+                  color: "#FFFFFF",
+                  padding: "16px",
+                  borderRadius: "20px",
+                  fontSize: "17px",
+                  fontWeight: 700,
+                  textAlign: "center",
+                  textDecoration: "none",
+                }}
               >
                 {t("nav.cta")}
               </Link>
             </motion.div>
+
           </motion.div>
         )}
       </AnimatePresence>

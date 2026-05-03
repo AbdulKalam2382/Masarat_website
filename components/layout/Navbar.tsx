@@ -40,11 +40,6 @@ export default function Navbar() {
     ? "bg-white text-[#1B3A6B] hover:bg-[#F5F5F7]"
     : "bg-[#1d1d1f] text-white dark:bg-white dark:text-[#1B3A6B] dark:hover:bg-[#F5F5F7]";
 
-  const linkVariants = {
-    closed: { opacity: 0, x: isRTL ? 20 : -20 },
-    open: { opacity: 1, x: 0 }
-  };
-
   return (
     <>
       <nav

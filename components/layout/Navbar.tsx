@@ -8,6 +8,7 @@ import { X, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "../ui/ThemeToggle";
 import LanguageToggle from "../ui/LanguageToggle";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,6 +16,11 @@ export default function Navbar() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const { t, isRTL } = useLanguage();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
+  // Resolved inline bg — bypasses iOS Safari CSS variable rendering bugs
+  const menuBg = isDark ? "#0B1221" : "#FFFFFF";
 
   const navLinks = [
     { name: t("nav.services"), href: "/services" },
@@ -157,10 +163,19 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className={cn(
-              "fixed inset-0 z-[999] md:hidden flex flex-col bg-white dark:bg-[#0B1221] px-6 pb-8 shadow-2xl h-[100dvh] w-full",
+              "fixed z-[999] md:hidden flex flex-col px-6 pb-8 shadow-2xl",
               isRTL && "text-right"
             )}
-            style={{ touchAction: "none" }}
+            style={{
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: "100%",
+              height: "100dvh",
+              backgroundColor: menuBg,
+              touchAction: "none",
+            }}
             dir={isRTL ? "rtl" : "ltr"}
           >
             {/* Header in Overlay */}

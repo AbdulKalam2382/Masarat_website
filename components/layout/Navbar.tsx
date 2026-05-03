@@ -64,10 +64,10 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-[100] h-[130px] transition-all duration-500 flex items-center justify-center",
+        "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex items-center justify-center",
         isScrolled 
-          ? "bg-white/88 dark:bg-[#0B1221]/90 backdrop-blur-[24px] border-b-[0.5px] border-[#E5E5EA] dark:border-[#1E3150] h-[100px]" 
-          : "bg-transparent dark:bg-transparent"
+          ? "bg-white/95 dark:bg-[#0B1221]/95 backdrop-blur-[24px] border-b-[0.5px] border-[#E5E5EA] dark:border-[#1E3150] h-[80px] md:h-[100px]" 
+          : "bg-transparent h-[100px] md:h-[130px]"
       )}
     >
       <div className="container max-w-7xl px-6 flex items-center justify-between h-full">
@@ -155,15 +155,18 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
-            className="fixed inset-0 bg-white dark:bg-[#0B1221] z-[120] md:hidden flex flex-col p-8 transition-colors duration-500 shadow-2xl"
+            initial={{ opacity: 0, x: isRTL ? "-100%" : "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: isRTL ? "-100%" : "100%" }}
+            transition={{
+              duration: 0.4,
+              ease: [0.16, 1, 0.3, 1]
+            }}
+            className="fixed inset-0 bg-white dark:bg-[#0B1221] z-[150] md:hidden flex flex-col p-8 transition-colors duration-500 shadow-2xl"
           >
             <div className="flex justify-between items-center mb-16">
               <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
-                <div className="relative w-[180px] h-[60px]">
+                <div className="relative w-[150px] h-[50px]">
                   <img
                     src="/images/Masarat Logo.png"
                     alt="Masarat Technologies"

@@ -71,24 +71,23 @@ export default function Navbar() {
       )}
     >
       <div className="container max-w-7xl px-6 flex items-center justify-between h-full">
-        {/* Logo */}
         <Link href="/" className="flex items-center">
           {isAtTop ? (
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg overflow-hidden bg-transparent">
+              <div className="w-10 h-10 rounded-lg overflow-hidden bg-transparent">
                 <img
                   src="/images/Masarat Logo.png"
                   alt="Masarat"
-                  className="w-full h-full object-cover scale-[2] translate-y-[-10%]"
+                  className="w-full h-full object-cover scale-[2.2] translate-y-[-10%]"
                 />
               </div>
-              <span className="text-white font-bold text-[20px] tracking-[-0.3px]">
+              <span className="text-white font-bold text-[24px] tracking-[-0.5px]">
                 Masarat
                 <span className="text-[#2563EB]">.</span>
               </span>
             </div>
           ) : (
-            <div className="relative w-[140px] h-[48px]">
+            <div className="relative w-[180px] h-[60px]">
               <img
                 src="/images/Masarat Logo.png"
                 alt="Masarat Technologies"
@@ -154,17 +153,16 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-        {mobileMenuOpen && (
           <motion.div
             initial="closed"
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-white dark:bg-[#0B1221] z-[110] md:hidden flex flex-col p-8 transition-colors duration-500"
+            className="fixed inset-0 bg-white dark:bg-[#0B1221] z-[120] md:hidden flex flex-col p-8 transition-colors duration-500 shadow-2xl"
           >
             <div className="flex justify-between items-center mb-16">
               <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
-                <div className="relative w-[140px] h-[48px]">
+                <div className="relative w-[180px] h-[60px]">
                   <img
                     src="/images/Masarat Logo.png"
                     alt="Masarat Technologies"

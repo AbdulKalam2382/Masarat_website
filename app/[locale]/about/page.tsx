@@ -6,7 +6,6 @@ import Process from "@/components/sections/Process";
 import Testimonial from "@/components/sections/Testimonial";
 import Challenges from "@/components/sections/Challenges";
 import QualityCompliance from "@/components/sections/QualityCompliance";
-import Partners from "@/components/sections/Partners";
 import { useLanguage } from "@/lib/LanguageContext";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +32,6 @@ export default function AboutPage() {
         
         <Challenges />
         <QualityCompliance />
-        <Partners />
         
         <Process />
         <Testimonial />

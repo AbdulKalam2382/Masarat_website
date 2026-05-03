@@ -10,9 +10,10 @@ import { cn } from "@/lib/utils";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const schema = z.object({
-  firstName: z.string().min(2, 'First name is required'),
-  lastName: z.string().min(2, 'Last name is required'),
-  email: z.string().email('Invalid work email'),
+  firstName: z.string().min(2, 'First name is required').regex(/^[a-zA-Z\s\u0600-\u06FF]+$/, 'Invalid name format'),
+  lastName: z.string().min(2, 'Last name is required').regex(/^[a-zA-Z\s\u0600-\u06FF]+$/, 'Invalid name format'),
+  email: z.string().email('Invalid email address'),
+  phone: z.string().min(8, 'Invalid phone number').regex(/^[0-9+\s]+$/, 'Only numbers allowed'),
   company: z.string().min(2, 'Company name is required'),
   message: z.string().min(10, 'Message must be at least 10 characters')
 });
@@ -187,6 +188,18 @@ export default function Contact() {
                   type="email" 
                   placeholder="name@company.com"
                   className={cn(inputClasses("email"), isRTL && "text-right")}
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className={cn("text-xs font-bold uppercase tracking-widest text-[#6B6B6B] dark:text-[#A1A1A6] px-1", isRTL && "text-right")}>
+                  {isRTL ? "رقم الهاتف" : "Phone Number"}
+                </label>
+                <input 
+                  {...register("phone")}
+                  type="tel" 
+                  placeholder="+965 1234 5678"
+                  className={cn(inputClasses("phone"), isRTL && "text-right")}
                 />
               </div>
 

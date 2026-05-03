@@ -26,12 +26,12 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div className="md:col-span-4 flex flex-col gap-8">
             <Link href="/" className="inline-block">
-              <div className="relative w-[400px] h-[180px]">
+              <div className="relative w-[480px] h-[220px]">
                 <Image
                   src="/images/Masarat Logo.png"
                   alt="Masarat Technologies"
                   fill
-                  sizes="400px"
+                  sizes="480px"
                   className="object-contain object-left mix-blend-multiply dark:mix-blend-normal"
                 />
               </div>

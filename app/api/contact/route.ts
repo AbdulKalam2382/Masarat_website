@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const body = await req.json()
-    const { firstName, lastName, email, company, message } = body
+    const { firstName, lastName, email, phone, company, message } = body
 
     // Send notification to Masarat
     await resend.emails.send({
@@ -18,6 +18,7 @@ export async function POST(req: Request) {
           <hr />
           <p><strong>Name:</strong> ${firstName} ${lastName}</p>
           <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
           <p><strong>Company:</strong> ${company}</p>
           <p><strong>Message:</strong></p>
           <p style="background: #f4f4f4; padding: 15px; border-radius: 8px;">${message}</p>

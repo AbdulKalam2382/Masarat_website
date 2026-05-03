@@ -71,7 +71,7 @@ export default function Navbar() {
                   />
                 </div>
                 <span className="text-white font-bold text-[24px] tracking-[-0.5px]">
-                  Masarat
+                  MASARAT
                   <span className="text-[#2563EB]">.</span>
                 </span>
               </div>

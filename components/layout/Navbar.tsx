@@ -153,6 +153,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
+        {mobileMenuOpen && (
           <motion.div
             initial="closed"
             animate="open"

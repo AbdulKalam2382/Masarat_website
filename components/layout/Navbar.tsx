@@ -152,17 +152,15 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{
-              duration: 0.5,
-              ease: [0.16, 1, 0.3, 1]
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             className={cn(
-              "fixed inset-0 z-[999] md:hidden flex flex-col bg-white dark:bg-[#0B1221] px-6 pb-8 shadow-2xl overflow-y-auto",
+              "fixed inset-0 z-[999] md:hidden flex flex-col bg-white dark:bg-[#0B1221] px-6 pb-8 shadow-2xl h-[100dvh] w-full",
               isRTL && "text-right"
             )}
+            style={{ touchAction: "none" }}
             dir={isRTL ? "rtl" : "ltr"}
           >
             {/* Header in Overlay */}

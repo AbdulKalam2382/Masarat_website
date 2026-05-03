@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { useLanguage } from "@/lib/LanguageContext";
 import { cn } from "@/lib/utils";
-import { useRouter, Link } from "@/i18n/routing";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Shield, Cloud, Brain } from "lucide-react";
 import { insights, getInsightLocale, getCategoryLabel } from "@/lib/insights";
@@ -13,7 +13,6 @@ import { formatDate } from "@/lib/formatDate";
 
 export default function InsightsPage() {
   const { t, isRTL, language } = useLanguage();
-  const router = useRouter();
   const [activeFilter, setActiveFilter] = useState("All");
 
   const filters = [

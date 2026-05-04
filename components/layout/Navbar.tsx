@@ -120,7 +120,7 @@ export default function Navbar() {
                   />
                 </div>
                 <span className="text-white font-bold text-2xl tracking-tighter">
-                  Masarat<span className="text-brand-blue-2">.</span>
+                
                 </span>
               </div>
             ) : (

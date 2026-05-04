@@ -6,8 +6,11 @@ import Process from "@/components/sections/Process";
 import Testimonial from "@/components/sections/Testimonial";
 import Challenges from "@/components/sections/Challenges";
 import QualityCompliance from "@/components/sections/QualityCompliance";
+import AboutVisionMission from "@/components/sections/AboutVisionMission";
 import { useLanguage } from "@/lib/LanguageContext";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AboutPage() {
   const { t, isRTL } = useLanguage();
@@ -15,27 +18,87 @@ export default function AboutPage() {
   return (
     <div className={cn(isRTL ? "font-cairo text-right" : "font-inter")}>
       <Navbar />
-      <div className="pt-[56px] min-h-screen bg-white dark:bg-[#0B1221] transition-colors duration-500">
-        <section className="py-24 border-b border-brand-border dark:border-[#1E3150] transition-colors duration-500">
-          <div className="container max-w-7xl mx-auto px-6">
-            <span className="text-xs uppercase tracking-[0.3em] font-bold text-brand-blue mb-4 block">
-              {t("about_page.kicker")}
-            </span>
-            <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-8 font-outfit uppercase text-brand-ink dark:text-[#F5F5F7]">
-              {t("about_page.title")}
-            </h1>
-            <p className="text-xl text-brand-muted dark:text-[#A1A1A6] font-light max-w-3xl leading-relaxed whitespace-pre-line">
-              {t("about_page.body")}
-            </p>
+      <main>
+        {/* HERO SECTION - CHANGE 2 Treatments */}
+        <section className="relative min-h-[80vh] flex items-center pt-[100px] overflow-hidden bg-brand-navy">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=90&w=1920&auto=format&fit=crop"
+              alt="About Masarat"
+              fill
+              className="object-cover opacity-60"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2A]/95 via-[#0D1B2A]/80 to-[#0D1B2A]/40" />
+          </div>
+
+          {/* Animated Dot Grid */}
+          <div className="absolute inset-0 z-10 bg-dot-grid opacity-60 pointer-events-none" />
+          
+          {/* Glow Orbs */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-brand-blue opacity-[0.07] blur-[140px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-cyan opacity-[0.04] blur-[100px] pointer-events-none" />
+
+          <div className="container max-w-7xl mx-auto px-6 relative z-20">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="section-kicker text-brand-cyan mb-6">
+                {t("about_page.kicker")}
+              </span>
+              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 font-outfit uppercase text-white leading-[0.95]">
+                {t("about_page.title")}
+              </h1>
+              <p className="text-xl md:text-2xl text-white/60 font-light max-w-3xl leading-relaxed whitespace-pre-line">
+                {t("about_page.body")}
+              </p>
+            </motion.div>
           </div>
         </section>
         
-        <Challenges />
-        <QualityCompliance />
+        {/* LIGHT SECTION - Diagonal Lines + Ghost M */}
+        <section className="relative py-32 bg-brand-surface overflow-hidden">
+          <div className="absolute inset-0 bg-diagonal-lines pointer-events-none opacity-50" />
+          <div className={cn(
+            "absolute text-[200px] font-black text-brand-blue/[0.025] leading-none select-none pointer-events-none tracking-tighter",
+            isRTL ? "left-0 bottom-0" : "right-0 bottom-0"
+          )}>
+            M
+          </div>
+          
+          <div className="container max-w-7xl mx-auto px-6 relative z-10">
+            <Challenges />
+          </div>
+        </section>
+
+        {/* WHITE SECTION - Top border + Noise */}
+        <section className="relative py-32 bg-white border-t border-brand-blue/10 bg-noise overflow-hidden">
+          <div className="container max-w-7xl mx-auto px-6 relative z-10">
+            <QualityCompliance />
+          </div>
+        </section>
         
-        <Process />
-        <Testimonial />
-      </div>
+        {/* VISION & MISSION - CHANGE 9 */}
+        <AboutVisionMission />
+
+        {/* LIGHT SECTION - Process */}
+        <section className="relative py-32 bg-brand-surface overflow-hidden">
+          <div className="absolute inset-0 bg-diagonal-lines pointer-events-none opacity-50" />
+          <div className="container max-w-7xl mx-auto px-6 relative z-10">
+            <Process />
+          </div>
+        </section>
+
+        {/* WHITE SECTION - Testimonial */}
+        <section className="relative py-32 bg-white border-t border-brand-blue/10 bg-noise overflow-hidden">
+          <div className="container max-w-7xl mx-auto px-6 relative z-10">
+            <Testimonial />
+          </div>
+        </section>
+      </main>
       <Footer />
     </div>
   );

@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Shield, Cloud, Brain } from "lucide-react";
 import { insights, getInsightLocale, getCategoryLabel } from "@/lib/insights";
 import { formatDate } from "@/lib/formatDate";
+import Image from "next/image";
 
 export default function InsightsPage() {
   const { t, isRTL, language } = useLanguage();
@@ -29,13 +30,13 @@ export default function InsightsPage() {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case "Cybersecurity":
-        return <Shield size={28} className="text-[#2563EB]" />;
+        return <Shield size={28} className="text-brand-blue" />;
       case "Cloud":
-        return <Cloud size={28} className="text-[#0EA5E9]" />;
+        return <Cloud size={28} className="text-brand-cyan" />;
       case "AI":
-        return <Brain size={28} className="text-[#C8963E]" />;
+        return <Brain size={28} className="text-brand-cyan" />;
       default:
-        return <BookOpen size={28} className="text-[#2563EB]" />;
+        return <BookOpen size={28} className="text-brand-blue" />;
     }
   };
 
@@ -43,245 +44,148 @@ export default function InsightsPage() {
     <div className={cn(isRTL ? "font-cairo text-right" : "font-inter")} dir={isRTL ? "rtl" : "ltr"}>
       <Navbar />
 
-      {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="pt-32 pb-20 bg-[#0B1221] relative overflow-hidden">
-        {/* Background grid */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.04]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(37,99,235,1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(37,99,235,1) 1px, transparent 1px)`,
-            backgroundSize: "64px 64px",
-          }}
-        />
+      <main>
+        {/* HERO SECTION - CHANGE 2 Treatments */}
+        <section className="relative min-h-[60vh] flex items-center pt-[100px] overflow-hidden bg-brand-navy">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?q=90&w=1920&auto=format&fit=crop"
+              alt="Masarat Knowledge Hub"
+              fill
+              className="object-cover opacity-50"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2A]/95 via-[#0D1B2A]/80 to-[#0D1B2A]/40" />
+          </div>
 
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.3em] uppercase text-[#2563EB] mb-6">
-              <span className="w-4 h-[1.5px] bg-[#2563EB] rounded-full" />
-              {t("insights_page.kicker")}
-            </span>
+          {/* Animated Dot Grid */}
+          <div className="absolute inset-0 z-10 bg-dot-grid opacity-60 pointer-events-none" />
+          
+          {/* Glow Orbs */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-brand-blue opacity-[0.07] blur-[140px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-cyan opacity-[0.04] blur-[100px] pointer-events-none" />
 
-            <h1 className="text-5xl md:text-7xl font-bold tracking-[-3px] leading-[0.98] text-white mb-6 max-w-3xl">
-              {t("insights_page.title")}
-            </h1>
+          <div className="container max-w-7xl mx-auto px-6 relative z-20">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-4xl"
+            >
+              <span className="section-kicker text-brand-cyan mb-6">
+                {t("insights_page.kicker")}
+              </span>
+              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 font-outfit uppercase text-white leading-[0.95]">
+                {t("insights_page.title")}
+              </h1>
+              <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed">
+                {t("insights_page.body")}
+              </p>
+            </motion.div>
+          </div>
+        </section>
 
-            <p className="text-[16px] text-white/45 max-w-xl leading-relaxed">
-              {t("insights_page.body")}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Filter Tabs ─────────────────────────────────────────────────── */}
-      <div className="sticky top-[56px] z-40 bg-white/90 dark:bg-[#0B1221]/90 backdrop-blur-xl border-b border-[#E5E5EA] dark:border-[#1E3150]">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex items-center gap-0 overflow-x-auto scrollbar-hide py-0">
-            {filters.map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
-                className={cn(
-                  "px-5 py-4 text-[12px] font-semibold",
-                  "tracking-tight whitespace-nowrap",
-                  "border-b-2 transition-all duration-200",
-                  activeFilter === filter.id
-                    ? "border-[#2563EB] text-[#2563EB]"
-                    : "border-transparent text-[#6B6B6B]",
-                  "hover:text-[#1d1d1f] dark:hover:text-white"
-                )}
-              >
-                {filter.label}
-              </button>
-            ))}
+        {/* Filter Tabs */}
+        <div className="sticky top-[72px] md:top-[88px] z-40 bg-white/95 dark:bg-brand-navy/95 backdrop-blur-xl border-b border-brand-border dark:border-white/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className={cn("flex items-center gap-0 overflow-x-auto scrollbar-hide py-0", isRTL && "flex-row-reverse")}>
+              {filters.map((filter) => (
+                <button
+                  key={filter.id}
+                  onClick={() => setActiveFilter(filter.id)}
+                  className={cn(
+                    "px-8 py-5 text-[11px] font-black uppercase tracking-[0.2em]",
+                    "border-b-2 transition-all duration-300",
+                    activeFilter === filter.id
+                      ? "border-brand-blue text-brand-blue dark:text-brand-cyan dark:border-brand-cyan"
+                      : "border-transparent text-brand-muted hover:text-brand-navy dark:hover:text-white"
+                  )}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* ── Article Grid ──────────────────────────────────────────────────── */}
-      <section className="bg-white dark:bg-[#0B1221] transition-colors duration-500 min-h-screen">
-        <div className="max-w-5xl mx-auto px-6 py-16">
-          {filteredArticles.length === 0 ? (
-            <div className="text-center py-24">
-              <div className="w-14 h-14 rounded-2xl bg-[#F8FAFC] dark:bg-[#111] border border-[#E5E5EA] dark:border-[#1E3150] flex items-center justify-center mx-auto mb-5">
-                <BookOpen size={22} className="text-[#A0A0A0]" />
+        {/* Article Grid */}
+        <section className="relative py-24 bg-brand-surface dark:bg-brand-navy overflow-hidden">
+          <div className="absolute inset-0 bg-diagonal-lines pointer-events-none opacity-40" />
+          
+          <div className="container max-w-7xl mx-auto px-6 relative z-10">
+            {filteredArticles.length === 0 ? (
+              <div className="text-center py-32 bg-white dark:bg-white/5 rounded-[3rem] border border-brand-border dark:border-white/10 shadow-sm">
+                <div className="w-16 h-16 rounded-2xl bg-brand-surface dark:bg-white/5 border border-brand-border dark:border-white/10 flex items-center justify-center mx-auto mb-6">
+                  <BookOpen size={28} className="text-brand-muted" />
+                </div>
+                <p className="text-lg text-brand-muted font-medium">
+                  {isRTL ? "لا توجد مقالات في هذه الفئة" : "No articles in this category yet"}
+                </p>
               </div>
-              <p className="text-[15px] text-[#6B6B6B] font-medium">
-                {isRTL ? "لا توجد مقالات في هذه الفئة" : "No articles in this category yet"}
-              </p>
-            </div>
-          ) : (
-            <motion.div
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: { staggerChildren: 0.1 },
-                },
-              }}
-              initial="hidden"
-              animate="visible"
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            >
-              {/* Featured article (first card — full width) */}
-              {filteredArticles[0] && (() => {
-                const article = filteredArticles[0];
-                const locale = getInsightLocale(article, language);
-                const categoryIcon = getCategoryIcon(article.category);
-                const categoryLabel = getCategoryLabel(article.category, language);
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredArticles.map((article, i) => {
+                  const locale = getInsightLocale(article, language);
+                  const categoryLabel = getCategoryLabel(article.category, language);
+                  const categoryIcon = getCategoryIcon(article.category);
 
-                return (
-                  <div className="md:col-span-2">
+                  return (
                     <motion.article
-                      initial={{ opacity: 0, y: 24 }}
+                      key={article.slug}
+                      initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      className="group"
+                      transition={{ delay: i * 0.1 }}
+                      className="group relative flex flex-col bg-white dark:bg-white/5 rounded-[2rem] border border-brand-border dark:border-white/10 overflow-hidden hover:border-brand-blue/50 hover:shadow-2xl hover:shadow-brand-blue/5 transition-all duration-500"
                     >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-[#E5E5EA] dark:border-[#1E3150] hover:border-[#2563EB]/40 transition-all duration-300 hover:shadow-xl hover:shadow-[#2563EB]/5">
-                        {/* Left: image placeholder with gradient */}
-                        <div className="relative h-64 md:h-auto bg-gradient-to-br from-[#0F1C2E] to-[#1a1a2e] flex items-center justify-center overflow-hidden">
-                          <div
-                            className="absolute inset-0 opacity-20"
-                            style={{
-                              backgroundImage: `
-                                linear-gradient(rgba(37,99,235,1) 1px, transparent 1px),
-                                linear-gradient(90deg, rgba(37,99,235,1) 1px, transparent 1px)`,
-                              backgroundSize: "40px 40px",
-                            }}
-                          />
-                          <div className="relative z-10 w-16 h-16 rounded-2xl bg-[#2563EB]/20 border border-[#2563EB]/30 flex items-center justify-center">
-                            {categoryIcon}
-                          </div>
+                      <div className="h-[3px] w-full bg-gradient-to-r from-brand-blue to-brand-cyan" />
+                      
+                      <div className="p-8 flex flex-col h-full">
+                        <div className={cn("flex items-center justify-between mb-8", isRTL && "flex-row-reverse")}>
+                          <span className="text-[10px] font-black tracking-[0.25em] uppercase text-brand-cyan">
+                            {categoryLabel}
+                          </span>
+                          <span className="text-[11px] font-bold text-brand-muted dark:text-white/30 uppercase tracking-widest">
+                            {article.readTime}
+                          </span>
                         </div>
 
-                        {/* Right: content */}
-                        <div className="p-8 bg-white dark:bg-[#10192C] flex flex-col justify-between">
-                          <div>
-                            <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4 bg-[#EFF6FF] dark:bg-[#2563EB]/10 text-[#2563EB]">
-                              {categoryLabel}
-                            </span>
-                            <Link href={`/insights/${article.slug}`}>
-                              <h2 className={cn(
-                                "text-2xl font-bold tracking-tight",
-                                "text-[#1d1d1f] dark:text-white",
-                                "mb-3 leading-tight",
-                                "hover:text-[#2563EB]",
-                                "hover:underline underline-offset-4",
-                                "decoration-[#2563EB] decoration-[1.5px]",
-                                "transition-colors duration-200",
-                                "cursor-pointer"
-                              )}>
-                                {locale.title}
-                              </h2>
-                            </Link>
-                            <p className="text-[14px] text-[#6B6B6B] leading-relaxed">
-                              {locale.excerpt}
-                            </p>
-                          </div>
-                          <div className="flex items-center justify-between mt-6 pt-6 border-t border-[#E5E5EA] dark:border-[#1E3150]">
-                            <span className="text-[12px] text-[#A0A0A0]">
-                              {formatDate(article.date, language)} · {article.readTime}
-                            </span>
-                            <Link href={`/insights/${article.slug}`} className={cn("text-[12px] font-semibold text-[#2563EB] flex items-center gap-1 group-hover:gap-2 transition-all duration-200 cursor-pointer", isRTL ? "flex-row-reverse" : "")}>
-                              {t("insights_page.read_article")}
-                              <ArrowRight size={12} className={cn(isRTL ? "rotate-180" : "")} />
-                            </Link>
-                          </div>
+                        <div className="w-12 h-12 rounded-xl bg-brand-surface dark:bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                          {categoryIcon}
                         </div>
-                      </div>
-                    </motion.article>
-                  </div>
-                );
-              })()}
 
-              {/* Remaining articles — 2 col */}
-              {filteredArticles.slice(1).map((article, i) => {
-                const locale = getInsightLocale(article, language);
-                const categoryLabel = getCategoryLabel(article.category, language);
+                        <Link href={`/insights/${article.slug}`} className="flex-1">
+                          <h3 className="text-2xl font-bold tracking-tight text-brand-navy dark:text-white mb-4 leading-tight group-hover:text-brand-blue dark:group-hover:text-brand-cyan transition-colors">
+                            {locale.title}
+                          </h3>
+                        </Link>
 
-                return (
-                  <div key={i}>
-                    <motion.article
-                      variants={{
-                        hidden: { opacity: 0, y: 24 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      className="group h-full"
-                    >
-                      <div className="h-full rounded-2xl border border-[#E5E5EA] dark:border-[#1E3150] overflow-hidden hover:border-[#2563EB]/40 hover:shadow-lg hover:shadow-[#2563EB]/5 transition-all duration-300 bg-white dark:bg-[#10192C] flex flex-col">
-                        {/* Colored top accent */}
-                        <div
-                          className="h-1 w-full"
-                          style={{
-                            background:
-                              article.category === "AI"
-                                ? "#C8963E"
-                                : article.category === "Cloud"
-                                ? "#0EA5E9"
-                                : "#2563EB",
-                          }}
-                        />
+                        <p className="text-sm text-brand-muted dark:text-white/40 leading-relaxed line-clamp-3 mb-8 font-medium">
+                          {locale.excerpt}
+                        </p>
 
-                        <div className="p-7 flex flex-col flex-1">
-                          {/* Category + read time */}
-                          <div className={cn("flex items-center justify-between mb-5", isRTL ? "flex-row-reverse" : "")}>
-                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#2563EB]">
-                              {categoryLabel}
-                            </span>
-                            <span className="text-[11px] text-[#A0A0A0]">
-                              {article.readTime}
-                            </span>
-                          </div>
-
-                          {/* Title */}
+                        <div className={cn("flex items-center justify-between pt-6 border-t border-brand-border dark:border-white/10", isRTL && "flex-row-reverse")}>
+                          <span className="text-[11px] font-bold text-brand-muted dark:text-white/30 uppercase tracking-widest">
+                            {formatDate(article.date, language)}
+                          </span>
                           <Link 
-                            href={`/insights/${article.slug}`}
-                            className="group/link"
+                            href={`/insights/${article.slug}`} 
+                            className={cn("flex items-center gap-2 text-xs font-black text-brand-blue dark:text-brand-cyan uppercase tracking-widest group/btn", isRTL && "flex-row-reverse")}
                           >
-                            <h3 className={cn(
-                              "text-[18px] font-bold tracking-tight",
-                              "leading-snug text-[#1d1d1f]",
-                              "dark:text-white mb-3",
-                              "group-hover/link:text-[#2563EB]",
-                              "transition-colors duration-200",
-                              "underline-offset-4",
-                              "hover:underline decoration-[#2563EB]",
-                              "decoration-[1.5px]",
-                              "cursor-pointer"
-                            )}>
-                              {locale.title}
-                            </h3>
+                            {isRTL ? "اقرأ" : "Read"}
+                            <ArrowRight size={14} className={cn("group-hover/btn:translate-x-1 transition-transform", isRTL && "rotate-180 group-hover/btn:-translate-x-1")} />
                           </Link>
-
-                          {/* Excerpt */}
-                          <p className="text-[13px] text-[#6B6B6B] leading-relaxed line-clamp-3 mb-6 flex-1">
-                            {locale.excerpt}
-                          </p>
-
-                          {/* Footer */}
-                          <div className={cn("flex items-center justify-between pt-5 border-t border-[#E5E5EA] dark:border-[#1E3150]", isRTL ? "flex-row-reverse" : "")}>
-                            <span className="text-[11px] text-[#A0A0A0]">
-                              {formatDate(article.date, language)}
-                            </span>
-                            <Link href={`/insights/${article.slug}`} className={cn("flex items-center gap-1 text-[12px] font-semibold text-[#2563EB] opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer", isRTL ? "flex-row-reverse" : "")}>
-                              {isRTL ? "اقرأ ←" : "Read →"}
-                            </Link>
-                          </div>
                         </div>
                       </div>
                     </motion.article>
-                  </div>
-                );
-              })}
-            </motion.div>
-          )}
-        </div>
-      </section>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

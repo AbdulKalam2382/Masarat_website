@@ -24,7 +24,7 @@ export default function Services() {
       number: "01",
       variant: "blue" as const,
       className: "col-span-12 lg:col-span-8 lg:row-span-2 min-h-[520px]",
-      href: "/services/digital-transformation",
+      href: "/solutions/digital-transformation",
       icon: <LayoutDashboard size={24} />,
     },
     {
@@ -34,7 +34,7 @@ export default function Services() {
       number: "02",
       variant: "dark" as const,
       className: "col-span-12 lg:col-span-4 min-h-[250px]",
-      href: "/services/ai-data",
+      href: "/solutions/ai-data",
       icon: <Brain size={24} />,
     },
     // Row 1 cont — Service 3 narrow (4 cols, same row as s2)
@@ -45,7 +45,7 @@ export default function Services() {
       number: "03",
       variant: "gold" as const,
       className: "col-span-12 lg:col-span-4 min-h-[250px]",
-      href: "/services/cybersecurity",
+      href: "/solutions/cybersecurity",
       icon: <Shield size={24} />,
     },
     // Row 2 — Service 4 narrow (4 cols) + Service 5 wide (8 cols)
@@ -56,7 +56,7 @@ export default function Services() {
       number: "04",
       variant: "offwhite" as const,
       className: "col-span-12 lg:col-span-4 min-h-[250px]",
-      href: "/services/elv-smart-systems",
+      href: "/solutions/elv-smart-systems",
       icon: <Server size={24} />,
     },
     {
@@ -66,7 +66,7 @@ export default function Services() {
       number: "05",
       variant: "outline" as const,
       className: "col-span-12 lg:col-span-8 min-h-[250px]",
-      href: "/services/mission-critical",
+      href: "/solutions/mission-critical",
       icon: <Database size={24} />,
     },
   ];

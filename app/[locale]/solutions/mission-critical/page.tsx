@@ -1,6 +1,6 @@
 "use client";
 import SolutionDetailTemplate from "@/components/templates/SolutionDetailTemplate";
-import { CheckSquare, Settings, BarChart2 } from "lucide-react";
+import { Server, Database, Zap, ShieldCheck, Settings, BarChart3 } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { cn } from "@/lib/utils";
 
@@ -8,43 +8,31 @@ export default function MissionCriticalPage() {
   const { isRTL } = useLanguage();
   return (
     <SolutionDetailTemplate
+      slug="mission-critical"
       name={isRTL ? "البنية التحتية الحيوية ومراكز البيانات" : "Mission-Critical Infrastructure & Data Centers"}
-      category={isRTL ? "الحلول" : "Solutions"}
+      category={isRTL ? "حيوي" : "Mission-Critical"}
+      heroImage="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=90&w=1920&auto=format&fit=crop"
+      bannerImage="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=85&w=1920&auto=format&fit=crop"
       description={isRTL
         ? "مسارات، بالتعاون مع هيدروتيك للهندسة، تقدم قدرات متخصصة في مراكز البيانات والبيئات الحيوية — من التصميم حتى التشغيل."
-        : "Masarat, together with Hydrotek Engineering, delivers specialized capabilities in data center and mission-critical environments — covering the full lifecycle from design to operations."}
+        : "Masarat, together with Hydrotek Engineering, delivers specialized capabilities in data center and mission-critical environments."}
       deliverables={isRTL ? [
-        "تصميم وبناء وترقية مراكز البيانات",
-        "تسليم بنية تحتية متوافقة مع المستوى الثالث (Tier III)",
-        "ترقية البيئات الحية بأقل قدر من التوقف",
-        "بيئات عالية الكثافة وجاهزة للذكاء الاصطناعي والحوسبة عالية الأداء",
-        "إدارة شاملة للمرافق والعمليات"
+        { title: "مراكز البيانات", description: "تصميم وبناء وترقية مراكز البيانات المتكاملة.", icon: <Server size={20} /> },
+        { title: "بنية Tier III", description: "تسليم بنية تحتية متوافقة مع المعايير الدولية.", icon: <ShieldCheck size={20} /> },
+        { title: "إدارة الطاقة", description: "تخطيط السعة وتحسين كفاءة استهلاك الطاقة.", icon: <Zap size={20} /> }
       ] : [
-        "Data center design, build, and upgrade",
-        "Tier III aligned infrastructure delivery",
-        "Live environment upgrades with minimal downtime",
-        "High-density, AI and HPC-ready environments",
-        "End-to-end facility management and operations"
+        { title: "Data Centers", description: "Design, build, and upgrade of integrated data center environments.", icon: <Server size={20} /> },
+        { title: "Tier III Infrastructure", description: "Delivery of infrastructure aligned to Tier III availability standards.", icon: <ShieldCheck size={20} /> },
+        { title: "Power & Capacity", description: "Capacity planning, power optimization, and operational efficiency.", icon: <Zap size={20} /> }
       ]}
-      steps={isRTL ? [
-        { title: "التخطيط", description: "تصميم مركز البيانات وتخطيط الطاقة ومتطلبات الامتثال." },
-        { title: "البناء", description: "تنسيق بناء المرفق وتكامل الأنظمة." },
-        { title: "التشغيل", description: "تشغيل مضبوط مع انضباط تشغيلي كامل." },
-        { title: "الإدارة", description: "إدارة المرافق المستمرة والمراقبة وتقارير الطاقة." }
+      approach={isRTL ? [
+        { title: "تسليم حقيقي", description: "خبرة واسعة في تسليم مراكز بيانات معتمدة وترقيات حية دون انقطاع للخدمة." },
+        { title: "شراكة استراتيجية", description: "نجمع بين نقاط قوة مسارات وهيدروتيك لتقديم حلول بنية تحتية حيوية متكاملة." },
+        { title: "الانضباط التشغيلي", description: "تطبيق ممارسات SOP/MOP/EOP الصارمة لضمان أقصى قدر من الجاهزية والاستمرارية." }
       ] : [
-        { title: "Plan", description: "Data center design, capacity planning, and compliance requirements." },
-        { title: "Build", description: "Facility construction coordination and systems integration." },
-        { title: "Operate", description: "Controlled go-live with full operational discipline." },
-        { title: "Manage", description: "Ongoing facility management, monitoring, and capacity reporting." }
-      ]}
-      differentiators={isRTL ? [
-        { title: "تسليم حقيقي", description: "مراكز بيانات معتمدة من Tier III وخبرة ترقية حية وإدارة تشغيل مستمرة.", icon: <CheckSquare size={20} /> },
-        { title: "شراكة هيدروتيك", description: "مسارات وهيدروتيك تجمعان نقاط قوة متكاملة للبنية التحتية الحيوية.", icon: <Settings size={20} /> },
-        { title: "إدارة الطاقة", description: "تخطيط الطاقة والإبلاغ وممارسات الانضباط التشغيلي لأعلى مستوى من الجاهزية.", icon: <BarChart2 size={20} /> }
-      ] : [
-        { title: "Real Delivery", description: "Tier III certified environments, live upgrade experience, and ongoing operational management.", icon: <CheckSquare size={20} /> },
-        { title: "Hydrotek Partnership", description: "Masarat and Hydrotek combine complementary strengths for mission-critical infrastructure delivery.", icon: <Settings size={20} /> },
-        { title: "Capacity Management", description: "Capacity planning, reporting, and SOP/MOP/EOP operational discipline for maximum uptime.", icon: <BarChart2 size={20} /> }
+        { title: "Proven Delivery", description: "Extensive experience in delivering certified data centers and performing live upgrades with zero downtime." },
+        { title: "Strategic Synergy", description: "Combining the complementary strengths of Masarat and Hydrotek for mission-critical infrastructure." },
+        { title: "Operational Discipline", description: "Implementing rigorous SOP/MOP/EOP practices to ensure maximum availability and uptime." }
       ]}
     >
       <section className="py-24 border-t border-brand-border dark:border-white/5">

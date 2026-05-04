@@ -1,51 +1,37 @@
 "use client";
 import SolutionDetailTemplate from "@/components/templates/SolutionDetailTemplate";
-import { Server, Building2, Monitor } from "lucide-react";
+import { Server, Building2, Monitor, Video, ShieldAlert, Cpu } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function ElvSmartSystemsPage() {
   const { isRTL } = useLanguage();
   return (
     <SolutionDetailTemplate
+      slug="elv-smart-systems"
       name={isRTL ? "أنظمة ELV والأنظمة الذكية" : "ELV & Smart Systems"}
-      category={isRTL ? "الحلول" : "Solutions"}
+      category={isRTL ? "بنية تحتية" : "Infrastructure"}
+      heroImage="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=90&w=1920&auto=format&fit=crop"
+      bannerImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=85&w=1920&auto=format&fit=crop"
       description={isRTL
         ? "مقدَّمة بتكامل كامل مع هيدروتيك للهندسة — تصميم وتنفيذ البيئات المادية والذكية المتكاملة."
         : "Delivered in full integration with Hydrotek Engineering — designing and implementing integrated physical and smart environments."}
       deliverables={isRTL ? [
-        "أنظمة ELV والأمن المتكاملة (كاميرات، تحكم بالوصول، مراكز القيادة)",
-        "أنظمة الإطفاء وسلامة الحياة",
-        "أنظمة إدارة المباني (BMS)",
-        "المباني الذكية وأتمتة المرافق",
-        "المراقبة والتحكم في الوقت الفعلي",
-        "تحسين الكفاءة التشغيلية"
+        { title: "أنظمة ELV والأمن", description: "كاميرات، تحكم بالوصول، ومراكز القيادة.", icon: <Video size={20} /> },
+        { title: "السلامة الذكية", description: "أنظمة الإطفاء وسلامة الحياة المتقدمة.", icon: <ShieldAlert size={20} /> },
+        { title: "إدارة المباني", description: "أنظمة BMS وأتمتة المرافق الذكية.", icon: <Cpu size={20} /> }
       ] : [
-        "ELV and integrated security systems (CCTV, access control, command centers)",
-        "Fire and life safety systems",
-        "Building management systems (BMS)",
-        "Smart buildings and facility automation",
-        "Real-time monitoring and control",
-        "Improved operational efficiency"
+        { title: "ELV & Security", description: "CCTV, access control, and centralized command centers.", icon: <Video size={20} /> },
+        { title: "Smart Safety", description: "Advanced fire and life safety systems integration.", icon: <ShieldAlert size={20} /> },
+        { title: "Building Management", description: "Intelligent BMS and facility automation solutions.", icon: <Cpu size={20} /> }
       ]}
-      steps={isRTL ? [
-        { title: "التقييم", description: "تقييم البنية التحتية الحالية ومتطلبات التكامل والأهداف التشغيلية." },
-        { title: "التصميم", description: "تصميم بنية تحتية متكاملة للحوسبة وأنظمة الجهد المنخفض والبيئات الذكية." },
-        { title: "النشر", description: "تنفيذ دقيق مع الحد الأدنى من التأثير على العمليات." },
-        { title: "التسليم", description: "اختبار شامل وتسليم منضبط وتدريب الفريق." }
+      approach={isRTL ? [
+        { title: "بنية تحتية مؤسسية", description: "حوسبة مؤسسية وتخزين وشبكات مصممة للأداء والمرونة العالية في البيئات الذكية." },
+        { title: "أنظمة الجهد المنخفض", description: "أنظمة جهد منخفض متكاملة تشمل المراقبة والتحكم بالوصول وأمن المباني بشكل موحد." },
+        { title: "الأوامر والتحكم", description: "منصات مركزية للأوامر والتحكم وحلول البيئات الذكية لإدارة شاملة للمرافق." }
       ] : [
-        { title: "Assess", description: "Current infrastructure evaluation, integration requirements, and operational goals." },
-        { title: "Design", description: "Integrated architecture for compute, ELV systems, and smart environments." },
-        { title: "Deploy", description: "Precise implementation with minimal operational disruption." },
-        { title: "Deliver", description: "Comprehensive testing, controlled handover, and team enablement." }
-      ]}
-      differentiators={isRTL ? [
-        { title: "بنية تحتية مؤسسية", description: "حوسبة مؤسسية وتخزين وشبكات مصممة للأداء والمرونة.", icon: <Server size={20} /> },
-        { title: "أنظمة الجهد المنخفض والأمن", description: "أنظمة جهد منخفض متكاملة تشمل المراقبة والتحكم بالوصول وأمن المباني.", icon: <Building2 size={20} /> },
-        { title: "الأوامر والتحكم", description: "منصات مركزية للأوامر والتحكم وحلول البيئات الذكية.", icon: <Monitor size={20} /> }
-      ] : [
-        { title: "IT Infrastructure", description: "Enterprise compute, storage, and networking designed for performance and resilience.", icon: <Server size={20} /> },
-        { title: "ELV & Security Systems", description: "Integrated low-voltage systems including CCTV, access control, and building security.", icon: <Building2 size={20} /> },
-        { title: "Command & Control", description: "Centralised command and control platforms and smart environment solutions.", icon: <Monitor size={20} /> }
+        { title: "Enterprise Infrastructure", description: "Enterprise compute, storage, and networking designed for performance and resilience in smart environments." },
+        { title: "Integrated ELV Systems", description: "Low-voltage systems including CCTV, access control, and building security working as one." },
+        { title: "Command & Control", description: "Centralised command and control platforms for seamless facility and smart environment management." }
       ]}
     />
   );

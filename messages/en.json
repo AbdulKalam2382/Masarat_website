@@ -1,70 +1,125 @@
 {
   "nav": {
-    "services": "Services",
+    "solutions": "Solutions",
     "about": "About",
-    "clients": "Clients",
+    "resources": "Resources",
     "career": "Career",
-    "contact": "Contact",
-    "cta": "Start a Project"
+    "contact": "Contact Us",
+    "cta": "Schedule Consultation",
+    "dropdowns": {
+      "about": {
+        "who_we_are": { "title": "Who We Are", "brief": "Our legacy and commitment to Kuwait." },
+        "vision_mission": { "title": "Vision & Mission", "brief": "The pillars of our corporate strategy." },
+        "delivery_model": { "title": "Delivery Model", "brief": "How we ensure mission-critical success." },
+        "tech_partners": { "title": "Technology Partners", "brief": "Collaborating with global leaders." }
+      },
+      "solutions": {
+        "enterprise": { "title": "Digital Platforms", "brief": "Enterprise transformation & automation." },
+        "ai_data": { "title": "AI & Data", "brief": "Intelligent systems & advanced analytics." },
+        "cybersecurity": { "title": "Cybersecurity", "brief": "Digital trust & infrastructure protection." },
+        "elv": { "title": "ELV & Smart Systems", "brief": "Integrated building & security solutions." },
+        "infrastructure": { "title": "Critical Infrastructure", "brief": "Data centers & mission-critical systems." }
+      },
+      "resources": {
+        "knowledge": { "title": "Knowledge Hub", "brief": "Insights on emerging technologies." },
+        "case_studies": { "title": "Case Studies", "brief": "Our proven track record in action." },
+        "downloads": { "title": "Downloads", "brief": "Whitepapers and corporate profiles." }
+      },
+      "career": {
+        "why_masarat": { "title": "Why Masarat", "brief": "Our values and work culture." },
+        "benefits": { "title": "Perks & Benefits", "brief": "How we take care of our people." },
+        "positions": { "title": "Open Positions", "brief": "Join the elite team in Kuwait." }
+      }
+    }
   },
   "hero": {
     "label": "Kuwait's IT Partner",
-    "line1": "We architect",
-    "line2": "digital trust.",
-    "line3": "for Kuwait.",
-    "sub": "Cybersecurity · Cloud · AI · IT Consulting",
-    "btn1": "Explore Services",
-    "btn2": "View Our Work",
-    "stat1": "40+ Years",
-    "stat2": "500+ Experts",
-    "stat3": "100% Local"
+    "line1": "WE ARCHITECT",
+    "line2": "DIGITAL TRUST.",
+    "sub": "Enterprise Intelligence · Cybersecurity · Infrastructure",
+    "btn1": "Explore Solutions",
+    "btn2": "Contact Us"
   },
-  "stats": {
-    "s1num": "40+", "s1lbl": "Years of Legacy",
-    "s2num": "500+", "s2lbl": "Certified Professionals",
-    "s3num": "25+", "s3lbl": "Years IT Focus",
-    "s4num": "100%", "s4lbl": "Local Delivery"
+  "about_page": {
+    "kicker": "About Masarat",
+    "title": "Partners in Success.",
+    "body": "Masarat Technologies is a leading enterprise IT solutions provider based in Kuwait. \n\nWe specialize in architecting the mission-critical pillars of digital transformation — from national cybersecurity to intelligent infrastructure."
   },
-  "about": {
-    "kicker": "Who We Are",
-    "title": "Partners & Committers to Success.",
-    "body": "Masarat Technologies is an Information Technology Solutions & Services provider based in Kuwait. Our founders bring more than 40 years of experience in the field.",
-    "link": "Learn More About Us"
-  },
-  "services": {
-    "kicker": "What We Do",
-    "title": "Specializations.",
-    "body": "We provide the mission-critical pillars of digital transformation. From national cybersecurity to sovereign cloud infrastructure.",
-    "s1": "Cybersecurity",
-    "s2": "Cloud Engineering",
-    "s3": "IT Consulting",
-    "link": "Learn More"
+  "solutions": {
+    "kicker": "Our Capabilities",
+    "page_title": "Integrated Solutions.",
+    "page_sub": "Five core capabilities. One accountable partner.",
+    "title": "Integrated Solutions.",
+    "link": "Know More",
+    "cta_title": "Ready to get started?",
+    "cta_sub": "Talk to our solutions team about your specific requirements.",
+    "cta_btn1": "Schedule a Consultation",
+    "s1title": "Enterprise Transformation & Digital Platforms",
+    "s1desc": "Enabling organisations to redesign, automate, and scale their core operations.",
+    "s2title": "AI, Data & Intelligent Systems",
+    "s2desc": "Building the data and AI foundation for intelligent decision-making.",
+    "s3title": "Cybersecurity & Digital Trust",
+    "s3desc": "Protecting critical environments through enterprise-grade security frameworks.",
+    "s4title": "ELV & Smart Systems",
+    "s4desc": "Designing and implementing integrated physical and smart environments.",
+    "s5title": "Mission-Critical Infrastructure",
+    "s5desc": "Specialized data center and critical environment lifecycle management.",
+    "detail": {
+      "overview": "Overview",
+      "process": "Methodology",
+      "approach": "Our Approach",
+      "why": "The Advantage",
+      "ctabanner": "Delivered with single-point accountability.",
+      "cta": "Schedule Consultation",
+      "btn1": "Get Started"
+    }
   },
   "footer": {
     "copy": "© 2026 Masarat Technologies · Kuwait",
-    "tagline": "Architecting Digital Trust & Enterprise Intelligence"
+    "tagline": "Architecting Digital Trust & Enterprise Intelligence",
+    "insights": "Knowledge Hub",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
-  "contact": {
+  "insights_page": {
+    "kicker": "Knowledge Hub",
+    "title": "Insights.",
+    "body": "Strategic intelligence on cybersecurity, AI, and the future of enterprise technology in Kuwait.",
+    "home_title": "Latest Insights.",
+    "home_link": "View Knowledge Hub",
+    "read_article": "Read Article",
+    "read_time": "min read"
+  },
+  "career_page": {
+    "kicker": "Careers",
+    "hero_title": "Join the Elite.",
+    "hero_sub": "Be part of the team architecting the digital future of Kuwait.",
+    "hero_cta": "View Openings",
+    "why_title": "Why Masarat?",
+    "why_statement": "We foster a culture of excellence, innovation, and local impact.",
+    "benefits_title": "Perks & Benefits",
+    "positions_title": "Current Openings",
+    "no_positions_title": "No current openings",
+    "no_positions_desc": "We are always looking for exceptional talent. Send us your CV for future opportunities.",
+    "send_cv": "Send Your CV",
+    "email": "careers@masaratkwt.com",
+    "v1t": "Integrity", "v1d": "We uphold the highest standards of professional trust.",
+    "v2t": "Innovation", "v2d": "Driving the next wave of intelligent systems.",
+    "v3t": "Impact", "v3d": "Creating real value for Kuwait's digital landscape.",
+    "b1t": "Premium Healthcare", "b1d": "Comprehensive coverage for you and your family.",
+    "b2t": "Continuous Learning", "b2d": "Access to global certifications and training.",
+    "b3t": "Flexible Work", "b3d": "Dynamic environment with hybrid work options.",
+    "b4t": "Performance Bonus", "b4d": "Rewarding excellence and strategic contributions."
+  },
+  "contact_page": {
+    "kicker": "Contact Us",
     "title": "Advisory.",
     "body": "Connect with our strategic consultants to architect your institution's digital future."
   },
-  "compliance": {
-    "kicker": "Compliance",
-    "title": "Regulatory excellence.",
-    "c1": "Quality Management Systems",
-    "c2": "Information Security Management",
-    "c3": "IT Service Management"
-  },
-  "process": {
-    "kicker": "Methodology",
-    "title": "A process built on precision.",
-    "p1t": "Discovery & Audit",
-    "p1d": "We analyze your current infrastructure to identify critical gaps and opportunities for optimization.",
-    "p2t": "Architecture Design",
-    "p2d": "Crafting a digital blueprint that balances ironclad security with enterprise-grade performance.",
-    "p3t": "Deployment & Integration",
-    "p3d": "Seamless execution with zero-downtime philosophy for mission-critical systems.",
-    "p4t": "Managed Support",
-    "p4d": "Continuous monitoring and proactive intelligence to ensure your trust remains unbroken."
+  "home": {
+    "vision_eyebrow": "Our Vision",
+    "vision_text": "To be the most trusted architect of digital intelligence and national infrastructure in Kuwait.",
+    "mission_eyebrow": "Our Mission",
+    "mission_text": "To deliver mission-critical technology solutions with single-point accountability and proven execution excellence."
   }
 }

@@ -1,47 +1,37 @@
 "use client";
 import SolutionDetailTemplate from "@/components/templates/SolutionDetailTemplate";
-import { Layers, Zap, BarChart2 } from "lucide-react";
+import { Layers, Zap, BarChart2, LayoutDashboard, Settings, Activity } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function DigitalTransformationPage() {
   const { isRTL } = useLanguage();
   return (
     <SolutionDetailTemplate
+      slug="digital-transformation"
       name={isRTL ? "التحول المؤسسي والمنصات الرقمية" : "Enterprise Transformation & Digital Platforms"}
-      category={isRTL ? "الحلول" : "Solutions"}
+      category={isRTL ? "مؤسسي" : "Enterprise"}
+      heroImage="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=90&w=1920&auto=format&fit=crop"
+      bannerImage="https://images.unsplash.com/photo-1497366412874-3415097a27e7?q=85&w=1920&auto=format&fit=crop"
       description={isRTL
         ? "تمكين المؤسسات من إعادة تصميم وأتمتة وتوسيع عملياتها الأساسية من خلال منصات مؤسسية متكاملة وتحول مدفوع بالعمليات."
         : "Enabling organisations to redesign, automate, and scale their core operations through integrated enterprise platforms and process-driven transformation."}
       deliverables={isRTL ? [
-        "منصات المؤسسات للحوكمة والأداء",
-        "أتمتة العمليات ورقمنة سير العمل",
-        "التكامل عبر أنظمة وظائف الأعمال",
-        "نماذج تشغيل متصلة وقابلة للقياس والتوسع"
+        { title: "منصات المؤسسات", description: "حوكمة وأداء معزز عبر منصات متكاملة.", icon: <LayoutDashboard size={20} /> },
+        { title: "أتمتة العمليات", description: "رقمنة سير العمل وتقليل المهام اليدوية.", icon: <Zap size={20} /> },
+        { title: "تكامل الأنظمة", description: "ربط وظائف الأعمال بسلاسة تامة.", icon: <Settings size={20} /> }
       ] : [
-        "Enterprise platforms for governance and performance",
-        "Process automation and workflow digitization",
-        "Integration across business systems and functions",
-        "Connected, measurable, and scalable operating models"
+        { title: "Enterprise Platforms", description: "Governance and performance via integrated platforms.", icon: <LayoutDashboard size={20} /> },
+        { title: "Process Automation", description: "Workflow digitization and manual task reduction.", icon: <Zap size={20} /> },
+        { title: "System Integration", description: "Seamlessly connecting business functions and data silos.", icon: <Settings size={20} /> }
       ]}
-      steps={isRTL ? [
-        { title: "التقييم", description: "تقييم معمّق للعمليات الحالية والثغرات والأهداف الاستراتيجية." },
-        { title: "التصميم", description: "تصميم منصات مؤسسية وخرائط عمليات مخصصة لمتطلباتك." },
-        { title: "التنفيذ", description: "تنفيذ دقيق مع إدارة التغيير وتكامل الأنظمة." },
-        { title: "الاختبار", description: "التحقق الصارم والتشغيل المضبوط عبر جميع الوظائف." }
+      approach={isRTL ? [
+        { title: "خبرة في العمليات", description: "نجمع بين خبرة العمليات التجارية والقدرة التقنية العميقة لضمان أن التكنولوجيا تخدم أهداف العمل." },
+        { title: "أتمتة ذكية", description: "تبسيط العمليات من خلال الأتمتة الذكية وإعادة تصميم سير العمل لتحقيق أقصى قدر من الكفاءة." },
+        { title: "رؤية قيادية", description: "توفير لوحات معلومات وأنظمة إبلاغ متطورة لدعم قرارات القيادة بناءً على بيانات دقيقة." }
       ] : [
-        { title: "Assess", description: "Deep-dive assessment of current processes, gaps, and strategic goals." },
-        { title: "Design", description: "Custom enterprise platform and process map design for your requirements." },
-        { title: "Implement", description: "Precise execution with change management and system integration." },
-        { title: "Validate", description: "Rigorous testing and controlled go-live across all functions." }
-      ]}
-      differentiators={isRTL ? [
-        { title: "خبرة في العمليات", description: "نجمع بين خبرة العمليات التجارية والقدرة التقنية العميقة.", icon: <Layers size={20} /> },
-        { title: "أتمتة ذكية", description: "تبسيط العمليات من خلال الأتمتة الذكية وإعادة تصميم سير العمل.", icon: <Zap size={20} /> },
-        { title: "رؤية قيادية", description: "لوحات معلومات وأنظمة إبلاغ لدعم قرارات القيادة.", icon: <BarChart2 size={20} /> }
-      ] : [
-        { title: "Process Expertise", description: "We combine business process expertise with deep technical integration capability.", icon: <Layers size={20} /> },
-        { title: "Intelligent Automation", description: "Streamlining operations through intelligent automation and workflow redesign.", icon: <Zap size={20} /> },
-        { title: "Leadership Visibility", description: "Dashboards and reporting systems for leadership decision-making.", icon: <BarChart2 size={20} /> }
+        { title: "Process Expertise", description: "We combine business process expertise with deep technical integration capability to ensure technology serves business goals." },
+        { title: "Intelligent Automation", description: "Streamlining operations through intelligent automation and workflow redesign for maximum efficiency." },
+        { title: "Leadership Visibility", description: "Dashboards and reporting systems that provide real-time insights for leadership decision-making." }
       ]}
     />
   );

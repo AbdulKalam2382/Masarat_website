@@ -4,8 +4,10 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import MarqueeStrip from "@/components/sections/MarqueeStrip";
+import PowerQuote from "@/components/sections/PowerQuote";
 import WhoWeAre from "@/components/sections/WhoWeAre";
-import ServicesPreview from "@/components/sections/ServicesPreview";
+import VisionMission from "@/components/sections/VisionMission";
+import SolutionsPreview from "@/components/sections/ServicesPreview";
 import SectorsWeServe from "@/components/sections/SectorsWeServe";
 import { useLanguage } from "@/lib/LanguageContext";
 import { cn } from "@/lib/utils";
@@ -36,16 +38,22 @@ export default function Home() {
         {/* 2. Marquee Strip */}
         <MarqueeStrip />
 
-        {/* 3. Who We Are */}
+        {/* 3. Power Quote (New) */}
+        <PowerQuote />
+
+        {/* 4. Who We Are */}
         <WhoWeAre />
 
-        {/* 4. What We Do — service cards */}
-        <ServicesPreview />
+        {/* 5. Vision & Mission (New) */}
+        <VisionMission />
 
-        {/* 4.5. Sectors We Serve */}
+        {/* 6. Solutions Preview (renamed ServicesPreview) */}
+        <SolutionsPreview />
+
+        {/* 7. Sectors We Serve */}
         <SectorsWeServe />
 
-        {/* 5. Insights Preview — 3 articles */}
+        {/* 8. Insights Preview — 3 articles */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
@@ -58,11 +66,11 @@ export default function Home() {
               transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
             }
           }}
-          className="relative py-24 bg-white border-t border-brand-border dark:border-[#1E3150] transition-colors duration-500 overflow-hidden"
+          className="relative py-32 bg-white border-t border-brand-border dark:border-[#1E3150] transition-colors duration-500 overflow-hidden"
         >
           {/* Decorative Background Number */}
-          <div className={cn("absolute -top-8 text-[180px] font-black text-[#1d1d1f]/[0.03] dark:text-white/[0.03] leading-none select-none pointer-events-none hidden lg:block", isRTL ? "right-8" : "-left-4")}>
-            03
+          <div className={cn("absolute -top-8 text-[180px] font-black text-brand-navy/[0.03] dark:text-white/[0.03] leading-none select-none pointer-events-none hidden lg:block", isRTL ? "right-8" : "-left-4")}>
+            04
           </div>
 
           <div className="container max-w-7xl mx-auto px-6 relative z-10">
@@ -72,21 +80,21 @@ export default function Home() {
                 <span className={cn("section-kicker mb-4", isRTL ? "flex-row-reverse" : "")}>
                   {t("insights_page.kicker")}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter font-outfit text-brand-ink dark:text-[#F5F5F7]">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter font-outfit text-brand-navy dark:text-[#F5F5F7]">
                   {t("insights_page.home_title")}
                 </h2>
               </div>
               <Link
                 href="/insights"
                 className={cn(
-                  "group flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] text-brand-ink dark:text-[#F5F5F7] hover:text-brand-blue transition-all duration-300 shrink-0",
+                  "group flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] text-brand-navy dark:text-[#F5F5F7] hover:text-brand-blue transition-all duration-300 shrink-0",
                   isRTL ? "flex-row-reverse" : ""
                 )}
               >
                 <span className="border-b border-transparent group-hover:border-brand-blue transition-all">
                   {t("insights_page.home_link")}
                 </span>
-                <div className="w-10 h-10 rounded-full border border-brand-ink/10 dark:border-white/10 flex items-center justify-center group-hover:bg-brand-blue group-hover:border-brand-blue group-hover:text-white transition-all duration-300">
+                <div className="w-10 h-10 rounded-full border border-brand-navy/10 dark:border-white/10 flex items-center justify-center group-hover:bg-brand-blue group-hover:border-brand-blue group-hover:text-white transition-all duration-300">
                   <ArrowRight
                     className={cn(
                       "w-4 h-4 transition-transform",
@@ -116,11 +124,7 @@ export default function Home() {
                       delay: i * 0.12,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="group flex flex-col bg-[#F8FAFC] dark:bg-[#162236] border border-brand-border dark:border-[#1E3150] rounded-3xl overflow-hidden hover:border-brand-blue/40 dark:hover:border-brand-blue/40 transition-all duration-500 hover:shadow-xl hover:shadow-brand-blue/5"
-                    style={{
-                      borderTopWidth: '2px',
-                      borderTopColor: article.category === 'Cybersecurity' ? '#2563EB' : article.category === 'Cloud' ? '#0EA5E9' : article.category === 'AI' ? '#C8963E' : '#2563EB'
-                    }}
+                    className="group flex flex-col bg-brand-surface dark:bg-brand-navy/40 border border-brand-border dark:border-white/10 rounded-3xl overflow-hidden hover:border-brand-blue/40 dark:hover:border-brand-blue/40 transition-all duration-500 hover:shadow-xl hover:shadow-brand-blue/5"
                   >
                     <div className="p-8 flex flex-col gap-5 flex-1">
                       {/* Category + read time */}
@@ -134,7 +138,7 @@ export default function Home() {
                           <Tag size={9} />
                           {categoryLabel}
                         </span>
-                        <span className={cn("flex items-center gap-1 text-[10px] text-brand-muted dark:text-[#6B6B6B] font-medium uppercase tracking-widest", isRTL ? "flex-row-reverse" : "")}>
+                        <span className={cn("flex items-center gap-1 text-[10px] text-brand-muted dark:text-white/40 font-medium uppercase tracking-widest", isRTL ? "flex-row-reverse" : "")}>
                           <Clock size={9} />
                           {article.readTime} {t("insights_page.read_time")}
                         </span>
@@ -142,13 +146,13 @@ export default function Home() {
 
                       {/* Title — bilingual */}
                       <Link href={`/insights/${article.slug}`}>
-                        <h3 className="text-[16px] font-bold tracking-tight text-[#1d1d1f] dark:text-white hover:text-[#2563EB] hover:underline underline-offset-4 decoration-[#2563EB] decoration-[1.5px] transition-colors duration-200 cursor-pointer leading-snug">
+                        <h3 className="text-[17px] font-bold tracking-tight text-brand-navy dark:text-white hover:text-brand-blue transition-colors duration-200 cursor-pointer leading-snug">
                           {locale.title}
                         </h3>
                       </Link>
 
                       {/* Excerpt — bilingual */}
-                      <p className="text-sm text-brand-muted dark:text-[#8E8E93] font-light leading-relaxed flex-1">
+                      <p className="text-sm text-brand-muted dark:text-white/50 font-light leading-relaxed flex-1">
                         {locale.excerpt}
                       </p>
 
@@ -171,7 +175,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* 6. Contact CTA Banner */}
+        {/* 9. Contact CTA Banner */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
@@ -184,14 +188,11 @@ export default function Home() {
               transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
             }
           }}
-          className="relative py-32 transition-colors duration-500 overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, #1B3A6B 0%, #1E4080 50%, #1B3A6B 100%)"
-          }}
+          className="relative py-32 transition-colors duration-500 overflow-hidden bg-brand-navy"
         >
-          {/* Blue Glow */}
+          {/* Cyan Glow */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-96 h-96 rounded-full bg-[#2563EB]/10 blur-[100px]" />
+            <div className="w-[800px] h-[800px] rounded-full bg-brand-blue/10 blur-[120px]" />
           </div>
 
           <div className="container max-w-7xl mx-auto px-6 relative z-10">
@@ -202,13 +203,13 @@ export default function Home() {
               )}
             >
               <div className="flex flex-col gap-4 max-w-xl">
-                <span className={cn("section-kicker text-brand-blue", isRTL ? "flex-row-reverse" : "")}>
+                <span className={cn("section-kicker text-brand-cyan", isRTL ? "flex-row-reverse" : "")}>
                   {t("contact_page.kicker")}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter font-outfit text-white leading-[1.05]">
+                <h2 className="text-4xl md:text-6xl font-bold tracking-tighter font-outfit text-white leading-[1.05]">
                   {isRTL ? "هل أنت مستعد لتحويل مؤسستك؟" : "Ready to transform your organisation?"}
                 </h2>
-                <p className="text-base text-white/50 font-light leading-relaxed">
+                <p className="text-lg text-white/50 font-light leading-relaxed">
                   {isRTL 
                     ? "كن شريكاً مع مسارات تكنولوجيز لتقديم تقنية متكاملة ومهمة عبر الكويت." 
                     : "Partner with Masarat Technologies for integrated, mission-critical technology delivery across Kuwait."}
@@ -218,12 +219,12 @@ export default function Home() {
               <div className={cn("flex flex-col sm:flex-row gap-4 shrink-0", isRTL ? "sm:flex-row-reverse" : "")}>
                 <Link
                   href="/contact"
-                  className="px-10 py-5 bg-white text-[#1B3A6B] font-bold rounded-full hover:bg-gray-100 transition-all hover:scale-105 shadow-xl shadow-white/10 text-center text-sm uppercase tracking-wider"
+                  className="px-10 py-5 bg-white text-brand-navy font-bold rounded-full hover:bg-brand-surface transition-all hover:scale-105 shadow-xl shadow-white/10 text-center text-sm uppercase tracking-wider"
                 >
                   {isRTL ? "جدوِّل استشارة" : "Schedule a Consultation"}
                 </Link>
                 <Link
-                  href="/services"
+                  href="/solutions"
                   className="px-10 py-5 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 transition-all text-center text-sm uppercase tracking-wider"
                 >
                   {isRTL ? "عرض قدراتنا →" : "View Our Capabilities →"}

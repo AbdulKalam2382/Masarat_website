@@ -10,7 +10,7 @@ export default function Footer() {
   const { t, isRTL } = useLanguage();
 
   const links = [
-    { name: t("nav.services"), href: "/services" },
+    { name: t("nav.solutions"), href: "/solutions" },
     { name: t("nav.about"), href: "/about" },
     { name: t("nav.career"), href: "/career" },
     { name: t("nav.contact"), href: "/contact" },

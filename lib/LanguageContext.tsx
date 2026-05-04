@@ -18,11 +18,37 @@ interface LanguageContextType {
 
 const enTranslations = {
   nav: {
-    services: "Services",
+    solutions: "Solutions",
     about: "About",
     career: "Career",
+    resources: "Resources",
     contact: "Contact",
-    cta: "Start a Project"
+    cta: "Start a Project",
+    dropdowns: {
+      about: {
+        who_we_are: { title: "Who We Are", brief: "Our story and founding" },
+        vision_mission: { title: "Vision & Mission", brief: "What drives us forward" },
+        delivery_model: { title: "Delivery Model", brief: "How we work" },
+        tech_partners: { title: "Technology Partners", brief: "Our global ecosystem" }
+      },
+      solutions: {
+        enterprise: { title: "Enterprise Transformation", brief: "Digital platforms & automation" },
+        ai_data: { title: "AI, Data & Intelligent Systems", brief: "End-to-end AI lifecycle" },
+        cybersecurity: { title: "Cybersecurity & Digital Trust", brief: "Enterprise security" },
+        elv: { title: "ELV & Smart Systems", brief: "Integrated physical systems" },
+        infrastructure: { title: "Mission-Critical Infrastructure", brief: "Data centers & operations" }
+      },
+      resources: {
+        knowledge: { title: "Knowledge Hub", brief: "Insights & perspectives" },
+        case_studies: { title: "Case Studies", brief: "Delivered projects" },
+        downloads: { title: "Downloads", brief: "Company profile & brochures" }
+      },
+      career: {
+        why_masarat: { title: "Why Work at Masarat", brief: "Our culture & values" },
+        benefits: { title: "Our Benefits", brief: "What we offer our team" },
+        positions: { title: "Open Positions", brief: "Current opportunities" }
+      }
+    }
   },
   hero: {
     label: "Kuwait's IT Partner",
@@ -30,20 +56,26 @@ const enTranslations = {
     line2: "digital trust.",
     line3: "for Kuwait.",
     sub: "Cybersecurity · Cloud · AI · IT Consulting",
-    btn1: "Explore Services",
+    btn1: "Explore Solutions",
     btn2: "Contact Us"
   },
-  about: {
-    kicker: "Who We Are",
-    title: "Partners & Committers to Success.",
-    body: "Masarat Technologies is a Kuwait-based enterprise technology partner delivering integrated digital transformation, artificial intelligence, and mission-critical infrastructure solutions. We enable organizations to design, build, and operate intelligent, secure, and scalable environments — combining strategic advisory with deep execution capability.\n\nThrough our integrated delivery model, established in close partnership with Hydrotek Engineering, Masarat provides a single point of accountability across both digital platforms and physical infrastructure.",
-    link: "Learn More About Us"
+  home: {
+    power_quote: "We don't just implement technology. We take ownership of outcomes — delivering solutions that are secure, intelligent, and built to last.",
+    power_sub: "Masarat Technologies partners with Kuwait's most critical organisations to design, build, and operate intelligent digital and infrastructure environments.",
+    power_btn: "Why We Are Different →",
+    vision_eyebrow: "OUR VISION",
+    vision_text: "To be a trusted partner driving digital transformation and intelligent technology adoption in Kuwait and the region.",
+    mission_eyebrow: "OUR MISSION",
+    mission_text: "To deliver reliable and high-quality digital, AI, and infrastructure solutions through strong partnerships, skilled teams, and a commitment to creating real value.",
+    learn_more: "Learn More →"
   },
-  services: {
+  solutions: {
     kicker: "Core Capabilities",
     title: "Integrated solutions for mission-critical environments.",
-    page_title: "End-to-end technology solutions.",
-    page_sub: "Built for Kuwait's most demanding government, banking, oil & gas, and enterprise environments.",
+    page_title: "Integrated Solutions.",
+    page_sub: "Five capabilities. One accountable partner.",
+    grid_title: "What We Solve",
+    grid_sub: "Our capabilities span the full enterprise stack — from digital platforms and AI to physical infrastructure and data centers.",
     body: "From enterprise transformation and AI integration to cybersecurity, intelligent infrastructure, and data center delivery — Masarat delivers with accountability and long-term value.",
     s1title: "Enterprise Transformation & Digital Platforms",
     s1desc: "Enabling organisations to redesign, automate, and scale their core operations through integrated enterprise platforms.",
@@ -55,33 +87,64 @@ const enTranslations = {
     s4desc: "Designing and deploying integrated IT infrastructure and smart environments for modern enterprises.",
     s5title: "Mission-Critical Infrastructure & Data Centers",
     s5desc: "Full lifecycle data center delivery — from design and construction to operations and facility management.",
-    link: "Explore Capabilities",
-    learnmore: "Explore Capabilities →",
-    cta_title: "Not sure where to start?",
-    cta_sub: "Our team will assess your environment and recommend the right capabilities for your organisation.",
+    link: "Know More",
+    learnmore: "Know More →",
+    cta_title: "Ready to get started?",
+    cta_sub: "Talk to our solutions team about your specific requirements.",
     cta_btn1: "Schedule a Consultation",
     detail: {
       overview: "What We Deliver",
-      process: "How We Do It",
+      process: "How We Deliver",
+      process_sub: "Our proven delivery model in practice.",
+      approach: "Our Approach",
       why: "Why Masarat",
-      cta: "Get a Free Consultation",
+      cta: "Schedule a Consultation",
       ctabanner: "Ready to get started?",
-      ctasub: "Talk to our experts today.",
-      btn1: "Start a Project",
-      btn2: "Contact Us"
+      ctasub: "Talk to our solutions team about your specific requirements.",
+      btn1: "Schedule a Consultation",
+      btn2: "Download Overview",
+      banner_text: "Delivered with single-point accountability and proven execution capability."
     }
   },
-  process: {
-    kicker: "Delivery Model",
-    title: "A process built on precision.",
-    p1t: "Assessment & Planning",
-    p1d: "Deep-dive assessment of your current infrastructure, risks, and strategic goals.",
-    p2t: "Architecture & Design",
-    p2d: "Custom blueprints engineered for your organisation's exact scale and requirements.",
-    p3t: "Implementation & Integration",
-    p3d: "Zero-downtime execution with full accountability from our engineering team.",
-    p4t: "Testing & Deployment",
-    p4d: "Rigorous validation and controlled go-live across all integrated systems."
+  career_page: {
+    kicker: "Join Our Team",
+    hero_title: "Build What Matters.",
+    hero_sub: "Join a team delivering enterprise technology to Kuwait's most critical institutions.",
+    hero_cta: "View Open Positions",
+    why_title: "Why Work at Masarat",
+    why_statement: "We build technology that powers Kuwait's most important organisations. When you join Masarat, your work matters from day one.",
+    v1t: "Meaningful Work",
+    v1d: "Your work directly impacts government, banking, and critical infrastructure across Kuwait.",
+    v2t: "Real Growth",
+    v2d: "Exposure to enterprise-scale projects, leading global technology partners, and senior client engagement.",
+    v3t: "Strong Team",
+    v3d: "Work alongside certified professionals with deep domain expertise across IT, AI, and infrastructure.",
+    benefits_title: "What We Offer",
+    b1t: "Competitive Compensation",
+    b1d: "Market-aligned packages with performance-based rewards.",
+    b2t: "Learning & Development",
+    b2d: "Certifications, training programs, and access to global tech partner learning platforms.",
+    b3t: "Exposure to Global Tech",
+    b3d: "Work with Broadcom, Huawei, Qlik, Nozomi and other world-class vendors.",
+    b4t: "Fast Career Progression",
+    b4d: "Merit-based advancement in a growing company with expanding capabilities.",
+    b5t: "Collaborative Culture",
+    b5d: "A team that values accountability, quality, and delivering real results.",
+    b6t: "Based in Kuwait",
+    b6d: "Work on local projects that shape the technology landscape of Kuwait and the GCC.",
+    culture_title: "Our Work Culture",
+    culture_quote: "We do not just deploy technology. We take ownership of outcomes.",
+    p1t: "Accountability First",
+    p1d: "Every team member owns their deliverables end to end.",
+    p2t: "Quality Without Compromise",
+    p2d: "We operate in environments where failure is not an option.",
+    p3t: "Integrated Thinking",
+    p3d: "We connect digital and physical — no silos, no handover gaps.",
+    positions_title: "Current Opportunities",
+    no_positions_title: "No open roles right now",
+    no_positions_desc: "We are always interested in connecting with talented people. Send your CV and we will reach out when the right opportunity arises.",
+    send_cv: "Send Your CV",
+    email: "info@masaratkwt.com"
   },
   about_page: {
     kicker: "Our Story",
@@ -127,14 +190,6 @@ const enTranslations = {
     form_success: "We will be in touch within 24 hours.",
     form_error: "Something went wrong. Please try again."
   },
-  career_page: {
-    kicker: "Join Our Team",
-    title: "Build the future with us.",
-    body: "We are always looking for talented IT professionals in Kuwait.",
-    no_positions: "No open positions right now.",
-    send_cv: "Send your CV to:",
-    email: "info@masaratkwt.com"
-  },
   insights_page: {
     kicker: "Knowledge Hub",
     title: "Insights & Perspectives.",
@@ -153,7 +208,7 @@ const enTranslations = {
   },
   footer: {
     tagline: "Architecting Digital Trust & Enterprise Intelligence",
-    services: "Services",
+    solutions: "Solutions",
     about: "About",
     career: "Career",
     contact: "Contact",
@@ -175,11 +230,37 @@ const enTranslations = {
 
 const arTranslations = {
   nav: {
-    services: "الخدمات",
+    solutions: "الحلول",
     about: "من نحن",
     career: "الوظائف",
+    resources: "الموارد",
     contact: "تواصل معنا",
-    cta: "ابدأ مشروعك"
+    cta: "ابدأ مشروعك",
+    dropdowns: {
+      about: {
+        who_we_are: { title: "من نحن", brief: "قصتنا وتأسيسنا" },
+        vision_mission: { title: "الرؤية والرسالة", brief: "ما يدفعنا للأمام" },
+        delivery_model: { title: "نموذج التسليم", brief: "كيف نعمل" },
+        tech_partners: { title: "شركاء التقنية", brief: "نظامنا العالمي" }
+      },
+      solutions: {
+        enterprise: { title: "التحول المؤسسي", brief: "المنصات الرقمية والأتمتة" },
+        ai_data: { title: "الذكاء الاصطناعي والبيانات", brief: "دورة حياة الذكاء الاصطناعي" },
+        cybersecurity: { title: "الأمن السيبراني", brief: "أمن المؤسسات" },
+        elv: { title: "أنظمة ELV والأنظمة الذكية", brief: "الأنظمة المادية المتكاملة" },
+        infrastructure: { title: "البنية التحتية الحيوية", brief: "مراكز البيانات والعمليات" }
+      },
+      resources: {
+        knowledge: { title: "مركز المعرفة", brief: "رؤى ووجهات نظر" },
+        case_studies: { title: "دراسات الحالة", brief: "المشاريع المنفذة" },
+        downloads: { title: "التحميلات", brief: "ملف الشركة والكتيبات" }
+      },
+      career: {
+        why_masarat: { title: "لماذا تعمل في مسارات", brief: "ثقافتنا وقيمنا" },
+        benefits: { title: "ميزاتنا", brief: "ما نقدمه لفريقنا" },
+        positions: { title: "الوظائف الشاغرة", brief: "الفرص الحالية" }
+      }
+    }
   },
   hero: {
     label: "شريكك التقني في الكويت",
@@ -187,20 +268,26 @@ const arTranslations = {
     line2: "الثقة الرقمية.",
     line3: "للكويت.",
     sub: "الأمن السيبراني · السحابة · الذكاء الاصطناعي · استشارات تقنية",
-    btn1: "استكشف خدماتنا",
+    btn1: "استكشف الحلول",
     btn2: "تواصل معنا"
   },
-  about: {
-    kicker: "من نحن",
-    title: "شركاء وملتزمون بالنجاح.",
-    body: "مسارات تكنولوجيز شريك تقني مؤسسي مقره الكويت، يقدم حلولاً متكاملة للتحول الرقمي والذكاء الاصطناعي والبنية التحتية الحيوية. نمكّن المؤسسات من تصميم وبناء وتشغيل بيئات ذكية وآمنة وقابلة للتوسع.\n\nمن خلال نموذج التسليم المتكامل بالشراكة مع هيدروتيك للهندسة، تقدم مسارات نقطة مساءلة واحدة عبر المنصات الرقمية والبنية التحتية المادية.",
-    link: "اعرف أكثر عنّا"
+  home: {
+    power_quote: "نحن لا نكتفي بتنفيذ التقنية، بل نتحمل مسؤولية النتائج — لنقدم حلولاً آمنة وذكية ومبنية لتدوم.",
+    power_sub: "تتعاون مسارات تكنولوجيز مع المؤسسات الأكثر حيوية في الكويت لتصميم وبناء وتشغيل البيئات الرقمية والبنية التحتية الذكية.",
+    power_btn: "لماذا نحن مختلفون ←",
+    vision_eyebrow: "رؤيتنا",
+    vision_text: "أن نكون شريكاً موثوقاً يقود التحول الرقمي واعتماد التقنية الذكية في الكويت والمنطقة.",
+    mission_eyebrow: "مهمتنا",
+    mission_text: "تقديم حلول رقمية وذكاء اصطناعي وبنية تحتية موثوقة وعالية الجودة من خلال شراكات قوية وفرق متخصصة والتزام بخلق قيمة حقيقية.",
+    learn_more: "اعرف المزيد ←"
   },
-  services: {
+  solutions: {
     kicker: "القدرات الأساسية",
     title: "حلول متكاملة للبيئات الحيوية.",
-    page_title: "حلول تقنية شاملة من البداية إلى النهاية.",
-    page_sub: "مصممة لأكثر بيئات الكويت تطلبًا في القطاع الحكومي والمصرفي والنفط والغاز والمؤسسات.",
+    page_title: "حلول متكاملة.",
+    page_sub: "خمس قدرات. شريك واحد مسؤول.",
+    grid_title: "ما نحله",
+    grid_sub: "تغطي قدراتنا كامل النطاق المؤسسي — من المنصات الرقمية والذكاء الاصطناعي إلى البنية التحتية المادية ومراكز البيانات.",
     body: "من التحول المؤسسي وتكامل الذكاء الاصطناعي إلى الأمن السيبراني والبنية التحتية الذكية وتسليم مراكز البيانات — تقدم مسارات بمساءلة وقيمة طويلة الأمد.",
     s1title: "التحول المؤسسي والمنصات الرقمية",
     s1desc: "تمكين المؤسسات من إعادة تصميم وأتمتة وتوسيع عملياتها الأساسية من خلال منصات مؤسسية متكاملة.",
@@ -212,33 +299,64 @@ const arTranslations = {
     s4desc: "تصميم ونشر البنية التحتية لتقنية المعلومات المتكاملة والبيئات الذكية للمؤسسات الحديثة.",
     s5title: "البنية التحتية الحيوية ومراكز البيانات",
     s5desc: "تسليم كامل لدورة حياة مراكز البيانات — من التصميم والإنشاء إلى التشغيل وإدارة المرافق.",
-    link: "استكشف قدراتنا",
-    learnmore: "استكشف قدراتنا →",
-    cta_title: "لا تعرف من أين تبدأ؟",
-    cta_sub: "سيقيّم فريقنا بيئتك ويوصي بالقدرات المناسبة لمؤسستك.",
+    link: "اعرف المزيد",
+    learnmore: "اعرف المزيد ←",
+    cta_title: "هل أنت مستعد للبدء؟",
+    cta_sub: "تحدث مع فريق الحلول لدينا حول متطلباتك المحددة.",
     cta_btn1: "جدوِّل استشارة",
     detail: {
       overview: "ما نقدمه",
-      process: "كيف نعمل",
+      process: "كيف نسلم",
+      process_sub: "نموذج التسليم المثبت لدينا في الممارسة.",
+      approach: "منهجيتنا",
       why: "لماذا مسارات",
-      cta: "احصل على استشارة مجانية",
+      cta: "جدوِّل استشارة",
       ctabanner: "هل أنت مستعد للبدء؟",
-      ctasub: "تحدث مع خبرائنا اليوم.",
-      btn1: "ابدأ مشروعًا",
-      btn2: "تواصل معنا"
+      ctasub: "تحدث مع فريق الحلول لدينا حول متطلباتك المحددة.",
+      btn1: "جدوِّل استشارة",
+      btn2: "تحميل العرض العام",
+      banner_text: "يتم التسليم بمسؤولية نقطة واحدة وقدرة تنفيذ مثبتة."
     }
   },
-  process: {
-    kicker: "نموذج التسليم",
-    title: "منهجية مبنية على الدقة.",
-    p1t: "التقييم والتخطيط",
-    p1d: "تقييم معمّق للبنية التحتية الحالية والمخاطر والأهداف الاستراتيجية.",
-    p2t: "الهندسة المعمارية والتصميم",
-    p2d: "مخططات مخصصة مصممة وفق الحجم والمتطلبات الدقيقة لمؤسستك.",
-    p3t: "التنفيذ والتكامل",
-    p3d: "تنفيذ بدون توقف مع المساءلة الكاملة من فريق هندستنا.",
-    p4t: "الاختبار والنشر",
-    p4d: "التحقق الصارم والتشغيل المضبوط عبر جميع الأنظمة المتكاملة."
+  career_page: {
+    kicker: "انضم إلى فريقنا",
+    hero_title: "ابنِ ما يهم.",
+    hero_sub: "انضم إلى فريق يقدم تقنية المؤسسات لأهم المؤسسات الحيوية في الكويت.",
+    hero_cta: "عرض الوظائف الشاغرة",
+    why_title: "لماذا تعمل في مسارات",
+    why_statement: "نحن نبني التقنية التي تدير أهم المؤسسات في الكويت. عندما تنضم إلى مسارات، فإن عملك يهم من اليوم الأول.",
+    v1t: "عمل هادف",
+    v1d: "يؤثر عملك بشكل مباشر على الحكومة والخدمات المصرفية والبنية التحتية الحيوية في جميع أنحاء الكويت.",
+    v2t: "نمو حقيقي",
+    v2d: "التعرض لمشاريع على مستوى المؤسسات، وشركاء تقنية عالميين رائدين، وتفاعل رفيع المستوى مع العملاء.",
+    v3t: "فريق قوي",
+    v3d: "اعمل جنبًا إلى جنب مع محترفين معتمدين يتمتعون بخبرة عميقة في مجالات تقنية المعلومات والذكاء الاصطناعي والبنية التحتية.",
+    benefits_title: "ما نقدمه",
+    b1t: "تعويضات تنافسية",
+    b1d: "حزم متوافقة مع السوق مع مكافآت قائمة على الأداء.",
+    b2t: "التعلم والتطوير",
+    b2d: "شهادات وبرامج تدريبية والوصول إلى منصات التعلم لشركاء التقنية العالميين.",
+    b3t: "التعرض للتقنية العالمية",
+    b3d: "العمل مع Broadcom و Huawei و Qlik و Nozomi وغيرهم من الموردين العالميين.",
+    b4t: "تقدم وظيفي سريع",
+    b4d: "تقدم قائم على الجدارة في شركة متنامية ذات قدرات متوسعة.",
+    b5t: "ثقافة تعاونية",
+    b5d: "فريق يقدر المساءلة والجودة وتقديم نتائج حقيقية.",
+    b6t: "مقرنا في الكويت",
+    b6d: "اعمل في مشاريع محلية تشكل المشهد التقني في الكويت ودول مجلس التعاون الخليجي.",
+    culture_title: "ثقافة عملنا",
+    culture_quote: "نحن لا نكتفي بنشر التقنية، بل نتحمل مسؤولية النتائج.",
+    p1t: "المساءلة أولاً",
+    p1d: "كل عضو في الفريق يمتلك مخرجاته من البداية إلى النهاية.",
+    p2t: "الجودة دون مساومة",
+    p2d: "نحن نعمل في بيئات لا يكون الفشل فيها خيارًا.",
+    p3t: "التفكير المتكامل",
+    p3d: "نحن نربط الرقمي والمادي — لا حواجز، لا فجوات في التسليم.",
+    positions_title: "الفرص الحالية",
+    no_positions_title: "لا توجد أدوار شاغرة حاليًا",
+    no_positions_desc: "نحن مهتمون دائمًا بالتواصل مع الموهوبين. أرسل سيرتك الذاتية وسنتواصل معك عندما تظهر الفرصة المناسبة.",
+    send_cv: "أرسل سيرتك الذاتية",
+    email: "info@masaratkwt.com"
   },
   about_page: {
     kicker: "قصتنا",
@@ -284,19 +402,11 @@ const arTranslations = {
     form_success: "سنتواصل معك خلال ٢٤ ساعة.",
     form_error: "حدث خطأ ما. يرجى المحاولة مرة أخرى."
   },
-  career_page: {
-    kicker: "انضم إلى فريقنا",
-    title: "ابنِ المستقبل معنا.",
-    body: "نبحث دائمًا عن محترفين تقنيين موهوبين في الكويت.",
-    no_positions: "لا توجد وظائف شاغرة حاليًا.",
-    send_cv: "أرسل سيرتك الذاتية إلى:",
-    email: "info@masaratkwt.com"
-  },
   insights_page: {
     kicker: "مركز المعرفة",
     title: "رؤى ووجهات نظر.",
     body: "أفكار حول التقنية والأمن والتحول الرقمي في الكويت.",
-    read_article: "اقرأ المقال →",
+    read_article: "اقرأ المقال ←",
     all: "الكل",
     filter_cyber: "الأمن السيبراني",
     filter_cloud: "السحابة",
@@ -310,7 +420,7 @@ const arTranslations = {
   },
   footer: {
     tagline: "نبني الثقة الرقمية والذكاء المؤسسي",
-    services: "الخدمات",
+    solutions: "الحلول",
     about: "من نحن",
     career: "الوظائف",
     contact: "تواصل معنا",

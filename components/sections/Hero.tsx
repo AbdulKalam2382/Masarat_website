@@ -188,7 +188,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-5"
           >
             <Link
-              href="/services"
+              href="/solutions"
               className="px-10 py-5 bg-brand-blue text-white font-bold rounded-full hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-brand-blue/30 text-center"
             >
               {t("hero.btn1")}

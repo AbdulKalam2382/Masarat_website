@@ -7,7 +7,7 @@ import { Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   // Avoid hydration mismatch by waiting until mounted
@@ -17,19 +17,19 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 rounded-full border border-brand-border bg-white/50 dark:bg-white/5" />
+      <div className="w-10 h-10 rounded-full border border-brand-border bg-brand-surface dark:bg-white/5" />
     );
   }
 
-  const isDark = theme === "dark";
+  const isDark = resolvedTheme === "dark";
 
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
         "relative w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300",
-        "bg-[#F8FAFC] dark:bg-[#1A2744] border border-[#E5E5EA] dark:border-[#1E3150]",
-        "hover:scale-110 active:scale-90"
+        "bg-brand-surface dark:bg-white/5 border border-brand-border dark:border-white/10",
+        "hover:scale-110 active:scale-95 group"
       )}
       aria-label="Toggle Theme"
     >
@@ -42,7 +42,7 @@ export default function ThemeToggle() {
             exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <Moon className="w-5 h-5 text-[#1d1d1f] dark:text-white" />
+            <Moon className="w-5 h-5 text-brand-cyan group-hover:fill-brand-cyan transition-all" />
           </motion.div>
         ) : (
           <motion.div
@@ -52,7 +52,7 @@ export default function ThemeToggle() {
             exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <Sun className="w-5 h-5 text-[#F5C518]" />
+            <Sun className="w-5 h-5 text-brand-blue group-hover:fill-brand-blue transition-all" />
           </motion.div>
         )}
       </AnimatePresence>

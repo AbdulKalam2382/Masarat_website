@@ -57,7 +57,7 @@ export default function ServiceDetailTemplate({
               animate={{ opacity: 1, y: 0 }}
               className={cn("flex items-center gap-2 text-white/40 text-xs font-bold uppercase tracking-widest mb-12", isRTL && "flex-row-reverse")}
             >
-              <Link href="/services" className="hover:text-blue-500 transition-colors">{t("nav.services")}</Link>
+              <Link href="/solutions" className="hover:text-blue-500 transition-colors">{t("nav.solutions")}</Link>
               {isRTL ? <ChevronLeft size={12} /> : <ChevronRight size={12} />}
               <span className="text-white/80">{name}</span>
             </motion.div>

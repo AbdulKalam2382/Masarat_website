@@ -115,7 +115,7 @@ export default function Navbar() {
                 <div className="w-10 h-10 rounded-lg overflow-hidden bg-transparent">
                   <img
                     src="/images/Masarat Logo.png"
-                    alt="Masarat"
+                    
                     className="w-full h-full object-cover scale-[2.2] translate-y-[-10%]"
                   />
                 </div>

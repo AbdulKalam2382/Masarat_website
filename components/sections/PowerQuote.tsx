@@ -3,16 +3,14 @@ import { motion } from 'framer-motion'
 import { useLanguage } from '@/lib/LanguageContext'
 import { cn } from '@/lib/utils'
 import { Quote } from 'lucide-react'
+import { Link } from '@/i18n/routing'
 
 export default function PowerQuote() {
   const { t, isRTL } = useLanguage()
 
   return (
     <section className="relative py-32 overflow-hidden bg-white dark:bg-brand-navy">
-      {/* Background Dot Grid */}
       <div className="absolute inset-0 bg-dot-grid opacity-[0.4] dark:opacity-[0.2]" />
-      
-      {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-blue/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center">
@@ -40,13 +38,15 @@ export default function PowerQuote() {
             {t('home.power_sub')}
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-4 px-8 py-4 bg-brand-navy dark:bg-white text-white dark:text-brand-navy rounded-full font-bold text-sm uppercase tracking-widest transition-all"
-          >
-            {t('home.power_btn')}
-          </motion.button>
+          <Link href="/about">
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-4 inline-block px-8 py-4 bg-brand-navy dark:bg-white text-white dark:text-brand-navy rounded-full font-bold text-sm uppercase tracking-widest transition-all hover:bg-brand-blue dark:hover:bg-brand-surface cursor-pointer"
+            >
+              {t('home.power_btn')}
+            </motion.span>
+          </Link>
         </motion.div>
       </div>
     </section>

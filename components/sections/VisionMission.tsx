@@ -50,7 +50,7 @@ export default function VisionMission() {
                 </div>
 
                 <div className="mt-auto pt-8">
-                  <Link href="/about" className={cn(
+                  <Link href="/about#vision" className={cn(
                     "inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:gap-3 transition-all",
                     isRTL && "flex-row-reverse"
                   )}>
@@ -98,7 +98,7 @@ export default function VisionMission() {
                 </div>
 
                 <div className="mt-auto pt-8">
-                  <Link href="/about" className={cn(
+                  <Link href="/about#mission" className={cn(
                     "inline-flex items-center gap-2 text-sm font-bold text-brand-cyan hover:gap-3 transition-all",
                     isRTL && "flex-row-reverse"
                   )}>

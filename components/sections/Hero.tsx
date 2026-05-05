@@ -3,86 +3,17 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
+import dynamic from "next/dynamic";
+
+const HeroModel = dynamic(
+  () => import('@/components/ui/HeroModel'),
+  { ssr: false }
+);
 import { useLanguage } from "@/lib/LanguageContext";
 import { cn } from "@/lib/utils";
 
 export default function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const { t, isRTL } = useLanguage();
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-    const dots: Dot[] = [];
-    const spacing = 40;
-
-    class Dot {
-      x: number;
-      y: number;
-      baseX: number;
-      baseY: number;
-
-      constructor(x: number, y: number) {
-        this.x = x;
-        this.y = y;
-        this.baseX = x;
-        this.baseY = y;
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.fillStyle = "rgba(37, 99, 235, 0.15)";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 1, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      update(time: number) {
-        // Slow movement
-        this.x = this.baseX + Math.sin(time * 0.001 + this.baseY) * 5;
-        this.y = this.baseY + Math.cos(time * 0.001 + this.baseX) * 5;
-      }
-    }
-
-    const init = () => {
-      dots.length = 0;
-      for (let x = 0; x < width; x += spacing) {
-        for (let y = 0; y < height; y += spacing) {
-          dots.push(new Dot(x, y));
-        }
-      }
-    };
-
-    let animationFrameId: number;
-    const animate = (time: number) => {
-      ctx.clearRect(0, 0, width, height);
-      dots.forEach((dot) => {
-        dot.update(time);
-        dot.draw();
-      });
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    init();
-    animate(0);
-
-    const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      init();
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
 
   const headlineLines = [
     { text: t("hero.line1"), weight: 300, color: "text-white" },
@@ -109,11 +40,8 @@ export default function Hero() {
         }}
       />
       
-      {/* Dot Grid Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0 pointer-events-none opacity-40"
-      />
+      {/* 3D Floating Element */}
+      <HeroModel />
 
       {/* Radial Gradient behind Headline */}
       <div className="absolute inset-0 z-0 pointer-events-none">

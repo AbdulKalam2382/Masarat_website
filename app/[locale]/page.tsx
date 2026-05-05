@@ -207,12 +207,10 @@ export default function Home() {
                   {t("contact_page.kicker")}
                 </span>
                 <h2 className="text-4xl md:text-6xl font-bold tracking-tighter font-outfit text-white leading-[1.05]">
-                  {isRTL ? "هل أنت مستعد لتحويل مؤسستك؟" : "Ready to transform your organisation?"}
+                  {t("home.cta_title")}
                 </h2>
                 <p className="text-lg text-white/50 font-light leading-relaxed">
-                  {isRTL 
-                    ? "كن شريكاً مع مسارات تكنولوجيز لتقديم تقنية متكاملة ومهمة عبر الكويت." 
-                    : "Partner with Masarat Technologies for integrated, mission-critical technology delivery across Kuwait."}
+                  {t("home.cta_sub")}
                 </p>
               </div>
 
@@ -221,13 +219,13 @@ export default function Home() {
                   href="/contact"
                   className="px-10 py-5 bg-white text-brand-navy font-bold rounded-full hover:bg-brand-surface transition-all hover:scale-105 shadow-xl shadow-white/10 text-center text-sm uppercase tracking-wider"
                 >
-                  {isRTL ? "جدوِّل استشارة" : "Schedule a Consultation"}
+                  {t("nav.cta")}
                 </Link>
                 <Link
                   href="/solutions"
                   className="px-10 py-5 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 transition-all text-center text-sm uppercase tracking-wider"
                 >
-                  {isRTL ? "عرض قدراتنا →" : "View Our Capabilities →"}
+                  {t("home.cta_btn2")}
                 </Link>
               </div>
             </div>

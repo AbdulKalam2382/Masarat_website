@@ -5,12 +5,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "@/i18n/routing";
-import dynamic from "next/dynamic";
-
-const HeroGeometry = dynamic(
-  () => import('@/components/ui/HeroGeometry'),
-  { ssr: false }
-);
+import HeroBackground from "@/components/ui/HeroBackground";
 import { useLanguage } from "@/lib/LanguageContext";
 import { cn } from "@/lib/utils";
 
@@ -34,21 +29,6 @@ export default function Hero() {
     let mm = gsap.matchMedia(heroRef);
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      const isMobile = window.innerWidth < 768;
-      const intensity = isMobile ? 0.5 : 1;
-
-      // Explicitly set will-change
-      gsap.set([".hero-layer-1", ".hero-word"], { 
-        willChange: "transform" 
-      });
-
-      // Background Parallax Layer
-      gsap.to(".hero-layer-1", {
-        yPercent: 35 * intensity,
-        ease: "none",
-        scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: 0.5 }
-      });
-
       // Headline Word Reveal
       gsap.from('.hero-word', {
         yPercent: 100,
@@ -69,28 +49,8 @@ export default function Hero() {
       data-section-name="Hero"
       className="hero-section-trigger relative h-screen flex items-center justify-center bg-white dark:bg-[#0D1B2A] overflow-hidden transition-colors duration-500"
     >
-      {/* 3D Realistic Microchip Element */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden lg:block pr-12 w-[600px] h-[600px]">
-        <HeroGeometry />
-      </div>
-
-      <div className="absolute bottom-12 right-0 z-10 block lg:hidden w-full h-[400px]">
-        <HeroGeometry />
-      </div>
-
-      {/* Subtle Dot Grid Background */}
-      <div 
-        className="hero-layer-1 absolute inset-[-20%] z-0 pointer-events-none opacity-60 dark:opacity-40"
-        style={{
-          backgroundImage: `radial-gradient(rgba(13, 27, 42, 0.08) 1.5px, transparent 1.5px)`,
-          backgroundSize: "32px 32px"
-        }}
-      />
-
-      {/* Radial Glow Base */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#1A56DB] opacity-[0.03] blur-[120px]" />
-      </div>
+      {/* PREMIUM CANVAS BACKGROUND */}
+      <HeroBackground />
 
       {/* Floating Badge */}
       <motion.div

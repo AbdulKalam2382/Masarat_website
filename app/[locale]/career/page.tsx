@@ -6,12 +6,12 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
-  ArrowRight, Briefcase, Lightbulb, Shield, Users,
+  ArrowRight, Briefcase, Users,
   Trophy, GraduationCap, Globe, Zap, Heart, MapPin,
   Target, Layers
 } from "lucide-react";
-import Image from "next/image";
 import { Link } from "@/i18n/routing";
+import HeroBackground from "@/components/ui/HeroBackground";
 
 export default function CareerPage() {
   const { t, isRTL } = useLanguage();
@@ -32,9 +32,9 @@ export default function CareerPage() {
   ];
 
   const culturePillars = [
-    { icon: Shield,   key: "p1" },
-    { icon: Target,   key: "p2" },
-    { icon: Layers,   key: "p3" },
+    { icon: Target,   key: "p1" },
+    { icon: Layers,   key: "p2" },
+    { icon: Users,    key: "p3" },
   ];
 
   return (
@@ -45,20 +45,10 @@ export default function CareerPage() {
         {/* ═══════════════════════════════════════
             1. HERO
         ═══════════════════════════════════════ */}
-        <section className="relative min-h-[75vh] flex items-end overflow-hidden bg-brand-navy">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=85&w=1920&auto=format&fit=crop"
-              alt="Career at Masarat"
-              fill
-              className="object-cover opacity-45"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2A]/95 via-[#0D1B2A]/75 to-[#0D1B2A]/40" />
-          </div>
-          <div className="absolute inset-0 z-10 bg-dot-grid opacity-50 pointer-events-none" />
-          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-brand-blue opacity-[0.06] blur-[130px] pointer-events-none" />
-          <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-brand-blue-soft opacity-[0.04] blur-[100px] pointer-events-none" />
+        <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-white dark:bg-brand-navy">
+          
+          {/* PREMIUM CANVAS BACKGROUND */}
+          <HeroBackground />
 
           <div className="container max-w-7xl mx-auto px-6 pb-24 pt-[140px] relative z-20">
             <motion.div
@@ -67,13 +57,13 @@ export default function CareerPage() {
               transition={{ duration: 0.7 }}
               className="max-w-3xl"
             >
-              <span className="section-kicker text-brand-blue-soft mb-6 block">
+              <span className="section-kicker text-brand-blue mb-6 block">
                 {t("career_page.kicker")}
               </span>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 font-outfit text-white leading-[0.95] uppercase">
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 font-outfit text-brand-navy dark:text-white leading-[0.95] uppercase">
                 {t("career_page.hero_title")}
               </h1>
-              <p className="text-lg md:text-xl text-white/60 font-light max-w-xl leading-relaxed mb-10">
+              <p className="text-lg md:text-xl text-brand-muted dark:text-white/60 font-light max-w-xl leading-relaxed mb-10">
                 {t("career_page.hero_sub")}
               </p>
               <button
@@ -92,7 +82,6 @@ export default function CareerPage() {
 
         {/* ═══════════════════════════════════════
             2. WHY WORK AT MASARAT
-            Left: strong statement  |  Right: 3 cards
         ═══════════════════════════════════════ */}
         <section className="relative py-32 bg-white dark:bg-brand-navy overflow-hidden">
           <div className="absolute inset-0 bg-diagonal-lines pointer-events-none opacity-40 dark:opacity-20" />
@@ -110,7 +99,7 @@ export default function CareerPage() {
                 className={cn("flex flex-col gap-8", isRTL && "items-end")}
               >
                 <span className="section-kicker text-brand-blue">
-                  {isRTL ? "لماذا مسارات؟" : "Why Masarat?"}
+                  {t("career_page.why_title")}
                 </span>
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-brand-navy dark:text-white leading-[1.1]">
                   {t("career_page.why_title")}
@@ -123,7 +112,7 @@ export default function CareerPage() {
                     "inline-flex items-center gap-2 text-sm font-bold text-brand-blue uppercase tracking-widest hover:gap-3 transition-all group",
                     isRTL && "flex-row-reverse"
                   )}>
-                    {isRTL ? "اعرف أكثر" : "Learn More"}
+                    {t("home.learn_more")}
                     <ArrowRight size={14} className={cn(isRTL ? "rotate-180" : "")} />
                   </span>
                 </Link>
@@ -162,13 +151,13 @@ export default function CareerPage() {
         </section>
 
         {/* ═══════════════════════════════════════
-            3. OUR BENEFITS  — 6 cards, 3-col
+            3. OUR BENEFITS
         ═══════════════════════════════════════ */}
         <section className="relative py-32 bg-brand-surface dark:bg-white/[0.02] overflow-hidden">
           <div className="container max-w-7xl mx-auto px-6 relative z-10">
             <div className="mb-16">
               <span className="section-kicker text-brand-blue mb-4 block">
-                {isRTL ? "المزايا" : "Perks & Benefits"}
+                {t("career_page.benefits_title")}
               </span>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-brand-navy dark:text-white">
                 {t("career_page.benefits_title")}
@@ -204,40 +193,21 @@ export default function CareerPage() {
         </section>
 
         {/* ═══════════════════════════════════════
-            4. OUR WORK CULTURE  — full-width image
-               quote + 3 pillars overlay
+            4. OUR WORK CULTURE
         ═══════════════════════════════════════ */}
-        <section className="relative overflow-hidden">
-          {/* Background image */}
-          <div className="relative h-[600px] md:h-[700px]">
-            <Image
-              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=85&w=1920&auto=format&fit=crop"
-              alt="Work Culture at Masarat"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/70 via-brand-navy/80 to-brand-navy/95" />
-
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-10">
-              {/* Quote */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="max-w-3xl mb-20"
-              >
+        <section className="relative py-32 bg-brand-navy overflow-hidden">
+          <div className="container max-w-7xl mx-auto px-6 relative z-10">
+             <div className="text-center mb-20">
                 <span className="section-kicker text-brand-blue-soft mb-6 justify-center">
                   {t("career_page.culture_title")}
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold text-white font-outfit tracking-tight leading-tight mb-0">
+                <h2 className="text-3xl md:text-5xl font-bold text-white font-outfit tracking-tight leading-tight">
                   &ldquo;{t("career_page.culture_quote")}&rdquo;
                 </h2>
-              </motion.div>
+             </div>
 
-              {/* 3 Culture Pillars */}
               <div className={cn(
-                "grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 w-full max-w-5xl",
+                "grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 w-full max-w-5xl mx-auto",
                 isRTL && "text-right"
               )}>
                 {culturePillars.map((pillar, i) => (
@@ -247,7 +217,7 @@ export default function CareerPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-                    className="flex flex-col items-center gap-4 p-7 rounded-2xl bg-white/8 backdrop-blur-sm border border-white/10"
+                    className="flex flex-col items-center gap-4 p-7 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 text-center"
                   >
                     <div className="w-11 h-11 rounded-full bg-brand-blue-soft/20 text-brand-blue-soft flex items-center justify-center">
                       <pillar.icon size={20} />
@@ -261,35 +231,33 @@ export default function CareerPage() {
                   </motion.div>
                 ))}
               </div>
-            </div>
           </div>
         </section>
 
         {/* ═══════════════════════════════════════
             5. OPEN POSITIONS
         ═══════════════════════════════════════ */}
-        <section id="positions" className="relative py-32 bg-brand-navy overflow-hidden">
+        <section id="positions" className="relative py-32 bg-white dark:bg-brand-navy overflow-hidden">
           <div className="absolute inset-0 bg-dot-grid opacity-20 pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-brand-blue/10 blur-[120px] pointer-events-none" />
-
+          
           <div className="container max-w-4xl mx-auto px-6 relative z-10 text-center">
-            <span className="section-kicker text-brand-blue-soft justify-center mb-6">
-              {isRTL ? "الفرص الحالية" : "Current Openings"}
+            <span className="section-kicker text-brand-blue justify-center mb-6">
+              {t("career_page.positions_title")}
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-white mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-brand-navy dark:text-white mb-16">
               {t("career_page.positions_title")}
             </h2>
 
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-12 md:p-20">
+            <div className="bg-brand-surface dark:bg-white/5 backdrop-blur-xl border border-brand-border dark:border-white/10 rounded-[2.5rem] p-12 md:p-20">
               <div className="w-18 h-18 mx-auto mb-8">
-                <div className="w-16 h-16 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue mx-auto">
+                <div className="w-16 h-16 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue mx-auto">
                   <Briefcase size={36} />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-5 font-outfit">
+              <h3 className="text-2xl font-bold text-brand-navy dark:text-white mb-5 font-outfit">
                 {t("career_page.no_positions_title")}
               </h3>
-              <p className="text-base text-white/50 mb-12 font-light leading-relaxed max-w-md mx-auto">
+              <p className="text-base text-brand-muted dark:text-white/50 mb-12 font-light leading-relaxed max-w-md mx-auto">
                 {t("career_page.no_positions_desc")}
               </p>
               <div className="flex flex-col items-center gap-4">
@@ -299,7 +267,7 @@ export default function CareerPage() {
                 >
                   {t("career_page.send_cv")}
                 </a>
-                <span className="text-brand-blue-soft/70 text-sm font-medium tracking-wide">
+                <span className="text-brand-blue/70 text-sm font-medium tracking-wide">
                   {t("career_page.email")}
                 </span>
               </div>

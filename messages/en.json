@@ -150,13 +150,15 @@
     "read_time": "min read"
   },
   "career_page": {
-    "kicker": "Careers",
-    "hero_title": "Join the Elite.",
+    "kicker": "Why work at Masarat?",
+    "hero_title": "Let's Build Together",
     "hero_sub": "Be part of the team architecting the digital future of Kuwait.",
     "hero_cta": "View Openings",
     "why_title": "Why Masarat?",
     "why_statement": "We foster a culture of excellence, innovation, and local impact.",
     "benefits_title": "Perks & Benefits",
+    "culture_title": "Our Culture",
+    "culture_quote": "Building the future of Kuwait, together.",
     "positions_title": "Current Openings",
     "no_positions_title": "No current openings",
     "no_positions_desc": "We are always looking for exceptional talent. Send us your CV for future opportunities.",
@@ -168,7 +170,12 @@
     "b1t": "Premium Healthcare", "b1d": "Comprehensive coverage for you and your family.",
     "b2t": "Continuous Learning", "b2d": "Access to global certifications and training.",
     "b3t": "Flexible Work", "b3d": "Dynamic environment with hybrid work options.",
-    "b4t": "Performance Bonus", "b4d": "Rewarding excellence and strategic contributions."
+    "b4t": "Performance Bonus", "b4d": "Rewarding excellence and strategic contributions.",
+    "b5t": "Modern Workspace", "b5d": "State-of-the-art facilities designed for collaboration.",
+    "b6t": "Wellness Program", "b6d": "Monthly activities focused on mental and physical health.",
+    "p1t": "Trust & Accountability", "p1d": "We take full ownership of our commitments and results.",
+    "p2t": "National Vision", "p2d": "Contributing to Kuwait's 2035 vision through digital excellence.",
+    "p3t": "Elite Talent", "p3d": "Work alongside the best engineers and consultants in the region."
   },
   "contact_page": {
     "kicker": "Contact Us",

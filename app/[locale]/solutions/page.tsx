@@ -14,10 +14,10 @@ import {
   Database
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
-import Image from "next/image";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import HeroBackground from "@/components/ui/HeroBackground";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -52,7 +52,7 @@ export default function SolutionsPage() {
             start: "top top",
             end: "+=600",
             pin: true,
-            scrub: 0.3, // Changed from 1
+            scrub: 0.3, 
           }
         }
       );
@@ -63,8 +63,8 @@ export default function SolutionsPage() {
 
   const solutions = [
     {
-      domain: isRTL ? "ذكاء" : "Intelligence",
-      title: isRTL ? "الذكاء الاصطناعي والبيانات والأنظمة الذكية" : "AI, Data & Intelligent Systems",
+      domain: isRTL ? t("solutions.domain_intelligence_ar") : t("solutions.domain_intelligence_en"),
+      title: t("solutions.s2title"),
       slug: "ai-data",
       icon: Brain,
       keyPoints: isRTL ? [
@@ -78,8 +78,8 @@ export default function SolutionsPage() {
       ]
     },
     {
-      domain: isRTL ? "أمن" : "Security",
-      title: isRTL ? "الأمن السيبراني والثقة الرقمية" : "Cybersecurity & Digital Trust",
+      domain: isRTL ? t("solutions.domain_security_ar") : t("solutions.domain_security_en"),
+      title: t("solutions.s3title"),
       slug: "cybersecurity",
       icon: Shield,
       keyPoints: isRTL ? [
@@ -93,8 +93,8 @@ export default function SolutionsPage() {
       ]
     },
     {
-      domain: isRTL ? "بنية تحتية" : "Infrastructure",
-      title: isRTL ? "أنظمة ELV والأنظمة الذكية" : "ELV & Smart Systems",
+      domain: isRTL ? t("solutions.domain_infrastructure_ar") : t("solutions.domain_infrastructure_en"),
+      title: t("solutions.s4title"),
       slug: "elv-smart-systems",
       icon: Building2,
       keyPoints: isRTL ? [
@@ -108,8 +108,8 @@ export default function SolutionsPage() {
       ]
     },
     {
-      domain: isRTL ? "حيوي" : "Mission-Critical",
-      title: isRTL ? "البنية التحتية الحيوية ومراكز البيانات" : "Mission-Critical Infrastructure & Data Centers",
+      domain: isRTL ? t("solutions.domain_critical_ar") : t("solutions.domain_critical_en"),
+      title: t("solutions.s5title"),
       slug: "mission-critical",
       icon: Database,
       keyPoints: isRTL ? [
@@ -123,8 +123,8 @@ export default function SolutionsPage() {
       ]
     },
     {
-      domain: isRTL ? "مؤسسي" : "Enterprise",
-      title: isRTL ? "التحول المؤسسي والمنصات الرقمية" : "Enterprise Transformation & Digital Platforms",
+      domain: isRTL ? t("solutions.domain_enterprise_ar") : t("solutions.domain_enterprise_en"),
+      title: t("solutions.s1title"),
       slug: "digital-transformation",
       icon: LayoutDashboard,
       keyPoints: isRTL ? [
@@ -143,14 +143,11 @@ export default function SolutionsPage() {
     <div className={cn(isRTL ? "font-cairo text-right" : "font-inter")}>
       <Navbar />
       <main>
-        {/* HERO SECTION - CHANGE 7 + CHANGE 2 Treatments */}
+        {/* HERO SECTION */}
         <section className="relative min-h-[60vh] flex items-center pt-[100px] overflow-hidden bg-white dark:bg-brand-navy">
-          {/* Subtle Dot Grid Background */}
-          <div className="absolute inset-0 z-0 bg-dot-grid opacity-10 dark:opacity-20 pointer-events-none" />
           
-          {/* Glow Orbs */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-brand-blue opacity-[0.07] blur-[140px] pointer-events-none" />
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-blue-soft opacity-[0.04] blur-[100px] pointer-events-none" />
+          {/* PREMIUM CANVAS BACKGROUND */}
+          <HeroBackground />
 
           <div className="container max-w-7xl mx-auto px-6 relative z-20">
             <motion.div
@@ -159,37 +156,33 @@ export default function SolutionsPage() {
               transition={{ duration: 0.8 }}
               className="max-w-4xl"
             >
-              <span className="section-kicker text-brand-blue mb-6">
-                {isRTL ? "حلول متكاملة" : "Integrated Solutions"}
+              <span className="section-kicker text-brand-blue mb-6 block">
+                {t("solutions.page_kicker")}
               </span>
               <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 font-outfit uppercase text-brand-navy dark:text-white leading-[0.95]">
-                {isRTL ? "حلول متكاملة." : "Integrated Solutions."}
+                {t("solutions.page_title")}
               </h1>
               <p className="text-xl md:text-2xl text-brand-muted dark:text-white/60 font-light max-w-2xl leading-relaxed">
-                {isRTL 
-                  ? "خمس قدرات أساسية. شريك واحد مسؤول."
-                  : "Five capabilities. One accountable partner."}
+                {t("solutions.page_sub")}
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* SOLUTIONS GRID - CHANGE 7 */}
+        {/* SOLUTIONS GRID */}
         <section ref={pinnedSectionRef} className="relative py-32 bg-brand-surface overflow-hidden">
           <div className="absolute inset-0 bg-diagonal-lines pointer-events-none opacity-50" />
           
           <div className="container max-w-7xl mx-auto px-6 relative z-10">
             <div className="mb-20">
-              <span className="section-kicker text-brand-blue mb-4 block">
-                {isRTL ? "ما نقوم بحله" : "What We Solve"}
+              <span className={cn("section-kicker text-brand-blue mb-4 block", isRTL ? "flex-row-reverse" : "")}>
+                {t("solutions.what_we_solve_kicker")}
               </span>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-brand-navy dark:text-white font-outfit">
-                {isRTL ? "ما نقوم بحله" : "What We Solve"}
+                {t("solutions.what_we_solve_title")}
               </h2>
               <p className="text-lg text-brand-muted mt-6 max-w-2xl leading-relaxed">
-                {isRTL 
-                  ? "تغطي قدراتنا مجموعة المؤسسة الكاملة - من المنصات الرقمية والذكاء الاصطناعي إلى البنية التحتية المادية ومراكز البيانات."
-                  : "Our capabilities span the full enterprise stack — from digital platforms and AI to physical infrastructure and data centers."}
+                {t("solutions.what_we_solve_desc")}
               </p>
             </div>
 
@@ -199,43 +192,37 @@ export default function SolutionsPage() {
                   key={solution.slug}
                   className="solution-card group relative rounded-2xl overflow-hidden border border-[#E2EAF8] dark:border-[#1E3150] bg-white dark:bg-[#0D1B2A] hover:border-[#1A56DB]/50 hover:shadow-2xl hover:shadow-[#1A56DB]/8 transition-all duration-300 flex flex-col"
                 >
-                  {/* Top accent bar */}
                   <div className="h-[3px] w-full bg-[#1A56DB]" />
                   
                   <div className="p-8 flex flex-col h-full">
-                    {/* Domain tag */}
                     <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-brand-blue-soft mb-6 block">
                       {solution.domain}
                     </span>
                     
-                    {/* Icon */}
                     <div className="w-14 h-14 rounded-xl bg-brand-surface dark:bg-brand-blue/10 border border-[#E2EAF8] dark:border-brand-blue/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
                       <solution.icon size={24} className="text-brand-blue" />
                     </div>
                     
-                    {/* Title */}
                     <h3 className="text-xl font-bold tracking-tight text-brand-navy dark:text-white mb-6 leading-tight min-h-[3.5rem]">
                       {solution.title}
                     </h3>
                     
-                    {/* Key points */}
                     <ul className="space-y-4 mb-10 flex-1">
                       {solution.keyPoints.map((point, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-[13px] text-brand-muted leading-relaxed">
+                        <li key={idx} className={cn("flex items-start gap-3 text-[13px] text-brand-muted leading-relaxed", isRTL && "flex-row-reverse")}>
                           <span className="w-1.5 h-1.5 rounded-full bg-brand-blue-soft mt-1.5 flex-shrink-0" />
                           {point}
                         </li>
                       ))}
                     </ul>
                     
-                    {/* Know More arrow button */}
                     <Link href={`/solutions/${solution.slug}`}>
                       <div className={cn(
                         "flex items-center gap-3 text-brand-blue text-sm font-bold group/link",
                         isRTL && "flex-row-reverse"
                       )}>
                         <span className="group-hover/link:underline underline-offset-8 transition-all">
-                          {isRTL ? "تعرف على المزيد" : "Know More"}
+                          {t("solutions.link")}
                         </span>
                         <div className="w-8 h-8 rounded-full border border-brand-blue/20 flex items-center justify-center group-hover/link:bg-brand-blue group-hover/link:border-brand-blue transition-all duration-300">
                           <ArrowRight 
@@ -260,18 +247,16 @@ export default function SolutionsPage() {
           <div className="absolute inset-0 bg-dot-grid opacity-20" />
           <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-white mb-8">
-              {isRTL ? "هل أنت مستعد للبدء؟" : "Ready to get started?"}
+              {t("solutions.cta_title")}
             </h2>
             <p className="text-xl text-white/50 mb-12 font-light">
-              {isRTL 
-                ? "تحدث مع فريق الحلول لدينا حول متطلباتك المحددة."
-                : "Talk to our solutions team about your specific requirements."}
+              {t("solutions.cta_sub")}
             </p>
             <Link
               href="/contact"
               className="inline-block px-12 py-5 bg-brand-blue text-white rounded-full font-bold text-sm uppercase tracking-widest hover:shadow-2xl hover:shadow-brand-blue/40 hover:scale-105 transition-all"
             >
-              {isRTL ? "احجز استشارة" : "Schedule a Consultation"}
+              {t("solutions.cta_btn1")}
             </Link>
           </div>
         </section>

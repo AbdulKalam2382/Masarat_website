@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "@/i18n/routing";
-import { ChevronRight, ChevronLeft, ArrowRight, Check } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,7 @@ import Image from "next/image";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import DomainHeroAnimation from "@/components/ui/DomainHeroAnimation";
+import HeroBackground from "@/components/ui/HeroBackground";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -97,21 +97,6 @@ export default function SolutionDetailTemplate({
         });
       });
 
-      gsap.utils.toArray("img").forEach((img: any) => {
-        if (img.closest('section')) {
-          gsap.from(img, {
-            scale: 1.05,
-            opacity: 0.5,
-            scrollTrigger: {
-              trigger: img,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 0.3,
-            }
-          });
-        }
-      });
-
       // 2. DOMAIN SPECIFIC SCROLL ANIMATIONS
       
       // Digital Transformation: Alternating Side Slides
@@ -133,7 +118,7 @@ export default function SolutionDetailTemplate({
 
       // AI & Data: Typewriter + Connection Lines
       if (slug === "ai-data") {
-        gsap.utils.toArray(".deliverable-item").forEach((item: any) => {
+        gsap.utils.toArray(".deliverable-item").forEach((item: Element) => {
           const title = item.querySelector("h4");
           if (title) {
             gsap.from(title, {
@@ -151,7 +136,7 @@ export default function SolutionDetailTemplate({
 
       // Cybersecurity: Scanning Beam
       if (slug === "cybersecurity") {
-        gsap.utils.toArray("section").forEach((section: any) => {
+        gsap.utils.toArray("section").forEach((section: HTMLElement) => {
           const beam = document.createElement("div");
           beam.className = "absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-blue-soft/30 to-transparent pointer-events-none z-50";
           section.style.position = "relative";
@@ -175,7 +160,7 @@ export default function SolutionDetailTemplate({
 
       // ELV & Smart Systems: Scaling Icons + Hub Connections
       if (slug === "elv-smart-systems") {
-        gsap.utils.toArray(".deliverable-icon-box").forEach((icon: any) => {
+        gsap.utils.toArray(".deliverable-icon-box").forEach((icon: Element) => {
           gsap.from(icon, {
             scale: 0,
             duration: 0.5,
@@ -230,17 +215,24 @@ export default function SolutionDetailTemplate({
     return () => ctx.revert();
   }, [slug, isRTL]);
 
+  const slugColors: Record<string, string> = {
+    'digital-transformation': 'rgba(26,86,219,0.06)',
+    'ai-data': 'rgba(59,130,246,0.07)',
+    'cybersecurity': 'rgba(26,86,219,0.05)',
+    'elv-smart-systems': 'rgba(59,130,246,0.06)',
+    'mission-critical': 'rgba(26,86,219,0.08)'
+  };
+
   return (
     <div className={cn(isRTL ? "font-cairo" : "font-inter")}>
       <Navbar />
       <main ref={mainRef} className="bg-white dark:bg-brand-navy overflow-hidden">
         
-        {/* SECTION 1: Hero - CHANGE 8 */}
+        {/* SECTION 1: Hero */}
         <section ref={heroRef} className="hero-section-trigger relative h-screen flex items-center overflow-hidden bg-white dark:bg-brand-navy">
-          <div className="absolute inset-0 z-0 bg-dot-grid opacity-10 dark:opacity-20 pointer-events-none" />
-
-          {/* Domain Specific Hero Animation */}
-          <DomainHeroAnimation slug={slug} />
+          
+          {/* PREMIUM CANVAS BACKGROUND WITH CUSTOM COLOR */}
+          <HeroBackground color={slugColors[slug]} />
 
           <div className="hero-text-content container max-w-7xl mx-auto px-6 relative z-20 pt-20 opacity-0">
             {/* Breadcrumb */}
@@ -291,7 +283,7 @@ export default function SolutionDetailTemplate({
           </div>
         </section>
 
-        {/* SECTION 2: Overview - CHANGE 8 */}
+        {/* SECTION 2: Overview */}
         <section className="py-32 bg-white dark:bg-brand-navy">
           <div className="container max-w-7xl mx-auto px-6">
             <div className="mb-20">
@@ -325,7 +317,7 @@ export default function SolutionDetailTemplate({
           </div>
         </section>
 
-        {/* SECTION 3: Approach - CHANGE 8 */}
+        {/* SECTION 3: Approach */}
         <section className="py-32 bg-brand-surface dark:bg-white/[0.02]">
           <div className="container max-w-7xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-brand-navy dark:text-white mb-20">
@@ -358,7 +350,7 @@ export default function SolutionDetailTemplate({
           </div>
         </section>
 
-        {/* SECTION 4: How We Deliver - CHANGE 8 */}
+        {/* SECTION 4: How We Deliver */}
         <section className="py-32 bg-white dark:bg-brand-navy overflow-hidden">
           <div className="container max-w-7xl mx-auto px-6">
             <div className="mb-20 text-center">
@@ -397,7 +389,7 @@ export default function SolutionDetailTemplate({
           </div>
         </section>
 
-        {/* SECTION 5: Image Banner - CHANGE 8 */}
+        {/* SECTION 5: Image Banner */}
         <section className="relative h-[280px] w-full overflow-hidden">
           <Image
             src={bannerImage}
@@ -418,7 +410,7 @@ export default function SolutionDetailTemplate({
           </div>
         )}
 
-        {/* SECTION 6: CTA - CHANGE 8 */}
+        {/* SECTION 6: CTA */}
         <section className="py-32 bg-brand-navy text-center">
           <div className="container max-w-4xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-white mb-8">

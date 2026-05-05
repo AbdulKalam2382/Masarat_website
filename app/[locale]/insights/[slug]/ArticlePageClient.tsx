@@ -180,7 +180,7 @@ export default function ArticlePageClient({ article }: Props) {
                       <div
                         key={j}
                         className={cn(
-                          "p-6 rounded-2xl bg-[#F8FAFC] dark:bg-[#162236] border border-brand-border dark:border-[#1E3150]",
+                          "p-6 rounded-2xl bg-[#F8FAFC] dark:bg-[#0D1B2A] border border-brand-border dark:border-[#1E3150]",
                           isRTL ? "text-right" : "text-left"
                         )}
                       >

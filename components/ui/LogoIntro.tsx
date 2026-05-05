@@ -3,7 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
+import { useLanguage } from '@/lib/LanguageContext'
+
 export default function LogoIntro() {
+  const { t } = useLanguage()
   const [show, setShow] = useState(false)
   const [phase, setPhase] = useState(0)
 
@@ -62,7 +65,7 @@ export default function LogoIntro() {
               scale: [0.8, 1.2, 1],
             } : { opacity: 0 }}
             transition={{ duration: 1.2 }}
-            className="w-[400px] h-[400px] rounded-full bg-[#00B4D8] blur-[80px]"
+            className="w-[400px] h-[400px] rounded-full bg-[#3B82F6] blur-[80px]"
           />
         </div>
 
@@ -112,7 +115,7 @@ export default function LogoIntro() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-[#00B4D8] text-xs tracking-[0.5em] uppercase font-bold mb-6 font-outfit"
+            className="text-[#3B82F6] text-xs tracking-[0.5em] uppercase font-bold mb-6 font-outfit"
           >
             TECHNOLOGIES
           </motion.p>
@@ -129,7 +132,7 @@ export default function LogoIntro() {
         )}
 
         <div className="absolute bottom-10 text-white/20 text-[10px] uppercase tracking-[0.2em]">
-          Click to skip
+          {t("common.skip")}
         </div>
       </motion.div>
     </AnimatePresence>

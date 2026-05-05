@@ -22,7 +22,7 @@ interface BentoCardProps {
 const variants = {
   blue: "bg-[#2563EB] text-white",
   offwhite: "bg-[#EEF3FB] dark:bg-[#10192C] border-[#E2EAF8] dark:border-[#1E3150] border text-[#1B3A6B] dark:text-white",
-  gold: "bg-[#FDF6EC] dark:bg-[#C8963E]/10 text-[#C8963E]",
+  gold: "bg-[#FDF6EC] dark:bg-[#1A56DB]/10 text-[#1A56DB]",
   dark: "bg-[#1B3A6B] dark:bg-[#0F1C2E] text-white",
   outline: "bg-white dark:bg-[#0B1221] border-[0.5px] border-[#E2EAF8] dark:border-[#1E3150] text-[#1B3A6B] dark:text-white",
 };
@@ -95,7 +95,7 @@ export default function BentoCard({ tag, title, description, number, className, 
                         : variant === 'dark'
                         ? 'rgba(255,255,255,0.4)'
                         : variant === 'gold'
-                        ? '#C8963E'
+                        ? '#1A56DB'
                         : '#2563EB'
                     }}
                   />

@@ -58,7 +58,7 @@ export default function CareerPage() {
           </div>
           <div className="absolute inset-0 z-10 bg-dot-grid opacity-50 pointer-events-none" />
           <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-brand-blue opacity-[0.06] blur-[130px] pointer-events-none" />
-          <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-brand-cyan opacity-[0.04] blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-brand-blue-soft opacity-[0.04] blur-[100px] pointer-events-none" />
 
           <div className="container max-w-7xl mx-auto px-6 pb-24 pt-[140px] relative z-20">
             <motion.div
@@ -67,7 +67,7 @@ export default function CareerPage() {
               transition={{ duration: 0.7 }}
               className="max-w-3xl"
             >
-              <span className="section-kicker text-brand-cyan mb-6 block">
+              <span className="section-kicker text-brand-blue-soft mb-6 block">
                 {t("career_page.kicker")}
               </span>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 font-outfit text-white leading-[0.95] uppercase">
@@ -79,7 +79,7 @@ export default function CareerPage() {
               <button
                 onClick={() => document.getElementById("positions")?.scrollIntoView({ behavior: "smooth" })}
                 className={cn(
-                  "inline-flex items-center gap-3 px-9 py-4 bg-brand-blue text-white rounded-full font-bold text-sm uppercase tracking-widest hover:bg-brand-cyan transition-all shadow-xl shadow-brand-blue/25",
+                  "inline-flex items-center gap-3 px-9 py-4 bg-brand-blue text-white rounded-full font-bold text-sm uppercase tracking-widest hover:bg-brand-blue-soft transition-all shadow-xl shadow-brand-blue/25",
                   isRTL && "flex-row-reverse"
                 )}
               >
@@ -227,7 +227,7 @@ export default function CareerPage() {
                 transition={{ duration: 0.8 }}
                 className="max-w-3xl mb-20"
               >
-                <span className="section-kicker text-brand-cyan mb-6 justify-center">
+                <span className="section-kicker text-brand-blue-soft mb-6 justify-center">
                   {t("career_page.culture_title")}
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold text-white font-outfit tracking-tight leading-tight mb-0">
@@ -249,7 +249,7 @@ export default function CareerPage() {
                     transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
                     className="flex flex-col items-center gap-4 p-7 rounded-2xl bg-white/8 backdrop-blur-sm border border-white/10"
                   >
-                    <div className="w-11 h-11 rounded-full bg-brand-cyan/20 text-brand-cyan flex items-center justify-center">
+                    <div className="w-11 h-11 rounded-full bg-brand-blue-soft/20 text-brand-blue-soft flex items-center justify-center">
                       <pillar.icon size={20} />
                     </div>
                     <h3 className="text-base font-bold text-white tracking-tight">
@@ -273,7 +273,7 @@ export default function CareerPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-brand-blue/10 blur-[120px] pointer-events-none" />
 
           <div className="container max-w-4xl mx-auto px-6 relative z-10 text-center">
-            <span className="section-kicker text-brand-cyan justify-center mb-6">
+            <span className="section-kicker text-brand-blue-soft justify-center mb-6">
               {isRTL ? "الفرص الحالية" : "Current Openings"}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-white mb-16">
@@ -295,11 +295,11 @@ export default function CareerPage() {
               <div className="flex flex-col items-center gap-4">
                 <a
                   href={`mailto:${t("career_page.email")}`}
-                  className="px-10 py-4 bg-brand-blue text-white rounded-full font-bold text-sm uppercase tracking-widest hover:bg-brand-cyan transition-all shadow-xl shadow-brand-blue/20"
+                  className="px-10 py-4 bg-brand-blue text-white rounded-full font-bold text-sm uppercase tracking-widest hover:bg-brand-blue-soft transition-all shadow-xl shadow-brand-blue/20"
                 >
                   {t("career_page.send_cv")}
                 </a>
-                <span className="text-brand-cyan/70 text-sm font-medium tracking-wide">
+                <span className="text-brand-blue-soft/70 text-sm font-medium tracking-wide">
                   {t("career_page.email")}
                 </span>
               </div>

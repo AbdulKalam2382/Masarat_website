@@ -44,7 +44,7 @@ export default function Footer() {
           {/* Links */}
           <div className="md:col-span-4 flex flex-col gap-6">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#6B6B6B] dark:text-[#A1A1A6] rtl:text-right">
-              {isRTL ? "التنقل" : "Navigation"}
+              {t("footer.nav_label")}
             </span>
             <div className="grid grid-cols-2 gap-4">
               {links.map((link) => (
@@ -62,7 +62,7 @@ export default function Footer() {
           {/* Social & Contact */}
           <div className="md:col-span-4 flex flex-col gap-8">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#6B6B6B] dark:text-[#A1A1A6] rtl:text-right">
-              {isRTL ? "التواصل" : "Connectivity"}
+              {t("footer.connect_label")}
             </span>
             <div className={cn("flex gap-5", isRTL ? "flex-row-reverse" : "flex-row")}>
               <a href="#" className="p-4 bg-white dark:bg-[#10192C] border border-[#E5E5EA] dark:border-[#1E3150] rounded-2xl text-brand-ink dark:text-white hover:bg-blue-600 hover:text-white transition-all shadow-sm hover:shadow-blue-600/20 group">
@@ -77,7 +77,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-xs text-[#6B6B6B] dark:text-[#A1A1A6] font-bold uppercase tracking-widest rtl:text-right">
-                {isRTL ? "استفسار الدعم" : "Support Inquiry"}
+                {t("footer.support_label")}
               </span>
               <a href="mailto:info@masaratkwt.com" className="text-lg font-bold text-brand-ink dark:text-[#F5F5F7] hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-outfit rtl:text-right">
                 info@masaratkwt.com

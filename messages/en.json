@@ -36,14 +36,46 @@
     "label": "Kuwait's IT Partner",
     "line1": "WE ARCHITECT",
     "line2": "DIGITAL TRUST.",
+    "line3": "INTELLIGENTLY.",
     "sub": "Enterprise Intelligence · Cybersecurity · Infrastructure",
     "btn1": "Explore Solutions",
-    "btn2": "Contact Us"
+    "btn2": "Contact Us",
+    "scroll": "Scroll"
   },
   "about_page": {
-    "kicker": "About Masarat",
-    "title": "Partners in Success.",
-    "body": "Masarat Technologies is a leading enterprise IT solutions provider based in Kuwait. \n\nWe specialize in architecting the mission-critical pillars of digital transformation — from national cybersecurity to intelligent infrastructure."
+    "body": "Masarat Technologies is a leading enterprise IT solutions provider based in Kuwait. \n\nWe specialize in architecting the mission-critical pillars of digital transformation — from national cybersecurity to intelligent infrastructure.",
+    "quality_title": "Enterprise Excellence & Compliance",
+    "quality_body": "Our solutions are governed by international standards and local regulatory frameworks, ensuring your institution remains compliant, secure, and resilient.",
+    "quality_footer": "ISO 27001 · SOC2 · NCA Compliant · CITRA Certified",
+    "challenges_title": "Solving Kuwait's Toughest Tech Challenges.",
+    "challenge1_title": "Data Sovereignty",
+    "challenge1_desc": "Architecting systems that keep Kuwait's data safe and localized within national borders.",
+    "challenge2_title": "Legacy Modernization",
+    "challenge2_desc": "Transforming aging infrastructure into high-performance digital platforms without operational downtime.",
+    "challenge3_title": "Cyber Resilience",
+    "challenge3_desc": "Building proactive defense systems against evolving global and regional cyber threats.",
+    "challenges_callout": "We don't just solve problems; we architect long-term institutional stability."
+  },
+  "about": {
+    "kicker": "Who We Are",
+    "title": "Architecting Digital Trust since 2026.",
+    "body": "Based in the heart of Kuwait, Masarat Technologies was founded to bridge the gap between complex global technologies and local institutional needs. We are more than an IT provider; we are strategic architects of the digital future.",
+    "metrics": {
+      "m1t": "Mission-Critical",
+      "m1d": "Environments we operate in",
+      "m2t": "End-to-End",
+      "m2d": "Ownership & accountability"
+    }
+  },
+  "home": {
+    "vision_eyebrow": "Our Vision",
+    "vision_text": "To be the most trusted architect of digital intelligence and national infrastructure in Kuwait.",
+    "mission_eyebrow": "Our Mission",
+    "mission_text": "To deliver mission-critical technology solutions with single-point accountability and proven execution excellence.",
+    "power_quote": "Technology is the lever. Trust is the fulcrum.",
+    "power_sub": "We don't just deploy systems; we architect institutional resilience.",
+    "power_btn": "Our Approach",
+    "learn_more": "Learn More"
   },
   "solutions": {
     "kicker": "Our Capabilities",
@@ -69,17 +101,44 @@
       "process": "Methodology",
       "approach": "Our Approach",
       "why": "The Advantage",
-      "ctabanner": "Delivered with single-point accountability.",
+      "deliver_title": "What We Deliver",
+      "deliver_desc": "Our proven delivery model in practice.",
+      "how_deliver": "How We Deliver",
+      "download": "Download Overview",
+      "ctabanner": "Delivered with single-point accountability and proven execution capability.",
       "cta": "Schedule Consultation",
-      "btn1": "Get Started"
+      "btn1": "Get Started",
+      "timeline": {
+        "s1t": "Assessment & Planning", "s1d": "Understanding requirements",
+        "s2t": "Architecture & Design", "s2d": "Building the blueprint",
+        "s3t": "Implementation & Integration", "s3d": "Actual deployment",
+        "s4t": "Testing & Deployment", "s4d": "Ensuring quality",
+        "s5t": "Operations & Optimization", "s5d": "Ongoing support"
+      }
     }
+  },
+  "sectors": {
+    "kicker": "Sectors We Serve",
+    "title": "Trusted across Kuwait's most demanding industries.",
+    "desc": "From government and banking to oil & gas and enterprise infrastructure — our solutions are designed for environments where performance, security, and reliability are non-negotiable.",
+    "s1t": "Government & Regulatory",
+    "s1d": "Central Bank of Kuwait and government institutions",
+    "s2t": "Banking & Financial Services",
+    "s2d": "Kuwait's leading banks and financial institutions",
+    "s3t": "Oil & Gas",
+    "s3d": "KOC, KGOC and energy sector infrastructure",
+    "s4t": "Enterprise & Private Sector",
+    "s4d": "Regional enterprises, healthcare & telecoms"
   },
   "footer": {
     "copy": "© 2026 Masarat Technologies · Kuwait",
     "tagline": "Architecting Digital Trust & Enterprise Intelligence",
     "insights": "Knowledge Hub",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "nav_label": "Navigation",
+    "connect_label": "Connectivity",
+    "support_label": "Support Inquiry"
   },
   "insights_page": {
     "kicker": "Knowledge Hub",
@@ -116,10 +175,45 @@
     "title": "Advisory.",
     "body": "Connect with our strategic consultants to architect your institution's digital future."
   },
-  "home": {
-    "vision_eyebrow": "Our Vision",
-    "vision_text": "To be the most trusted architect of digital intelligence and national infrastructure in Kuwait.",
-    "mission_eyebrow": "Our Mission",
-    "mission_text": "To deliver mission-critical technology solutions with single-point accountability and proven execution excellence."
+  "services": {
+    "s1title": "Strategic Advisory",
+    "s1desc": "Consulting on digital roadmaps and readiness.",
+    "s2title": "System Integration",
+    "s2desc": "Seamlessly connecting complex enterprise environments.",
+    "s3title": "Managed Services",
+    "s3desc": "24/7 mission-critical operations and support.",
+    "s4title": "Cloud Excellence",
+    "s4desc": "Hybrid and multi-cloud architecture and migration.",
+    "s5title": "Security Operations",
+    "s5desc": "Continuous monitoring and threat intelligence."
+  },
+  "process": {
+    "kicker": "The Methodology",
+    "title": "Delivered with Precision.",
+    "p1t": "Discovery & Advisory",
+    "p1d": "Strategic alignment with your institutional goals. We deep-dive into your existing infrastructure, security posture, and data maturity to define a clear transformation roadmap.",
+    "p2t": "Architecture & Design",
+    "p2d": "Engineering the blueprint for success. We design high-availability, high-performance systems that are resilient, scalable, and built on zero-trust principles.",
+    "p3t": "Implementation & Integration",
+    "p3d": "Zero-downtime execution with full accountability. Our engineering teams handle system integration across all layers — network, application, data, and security.",
+    "p4t": "Testing & Deployment",
+    "p4d": "Rigorous multi-phase validation before any go-live. Every deployment is governed by a formal Method of Procedure (MOP) with full rollback capability.",
+    "callouts": {
+      "c1t": "MOP-Governed Execution",
+      "c1d": "Every deployment follows a formal Method of Procedure with step-by-step validation gates and rollback plans.",
+      "c2t": "Zero-Downtime Transitions",
+      "c2d": "Live environment upgrades and migrations executed with minimal disruption to ongoing operations.",
+      "c3t": "Post-Deployment Stabilisation",
+      "c3d": "Dedicated hypercare period after go-live with intensive monitoring, rapid response, tuning support."
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "back_home": "Back to Home",
+    "page_not_found": "Page not found",
+    "offline": "You are offline",
+    "check_connection": "Please check your connection",
+    "skip": "Click to skip"
   }
 }

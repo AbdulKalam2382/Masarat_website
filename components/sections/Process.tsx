@@ -27,13 +27,13 @@ export default function Process() {
     },
     {
       num: "03",
-      title: isRTL ? t("process.p3t") : "Implementation & Integration",
-      desc: isRTL ? t("process.p3d") : "Zero-downtime execution with full accountability. Our engineering teams handle system integration across all layers — network, application, data, and security — ensuring every component works as a unified whole from day one."
+      title: t("process.p3t"),
+      desc: t("process.p3d")
     },
     {
       num: "04",
-      title: isRTL ? t("process.p4t") : "Testing & Deployment",
-      desc: isRTL ? t("process.p4d") : "Rigorous multi-phase validation before any go-live. This includes functional testing, load testing, security validation, failover simulation, user acceptance testing (UAT), and controlled deployment with rollback capability. Every deployment is governed by a formal MOP (Method of Procedure)."
+      title: t("process.p4t"),
+      desc: t("process.p4d")
     }
   ];
 
@@ -134,10 +134,10 @@ export default function Process() {
                 <CheckCircle size={16} className="text-[#2563EB]" />
               </div>
               <h4 className="text-white font-semibold text-sm mb-2">
-                MOP-Governed Execution
+                {t("process.callouts.c1t")}
               </h4>
               <p className="text-white/50 text-xs leading-relaxed">
-                Every deployment follows a formal Method of Procedure with step-by-step validation gates and rollback plans.
+                {t("process.callouts.c1d")}
               </p>
             </div>
 
@@ -146,10 +146,10 @@ export default function Process() {
                 <Shield size={16} className="text-[#2563EB]" />
               </div>
               <h4 className="text-white font-semibold text-sm mb-2">
-                Zero-Downtime Transitions
+                {t("process.callouts.c2t")}
               </h4>
               <p className="text-white/50 text-xs leading-relaxed">
-                Live environment upgrades and migrations executed with minimal disruption to ongoing operations.
+                {t("process.callouts.c2d")}
               </p>
             </div>
 
@@ -158,10 +158,10 @@ export default function Process() {
                 <Activity size={16} className="text-[#2563EB]" />
               </div>
               <h4 className="text-white font-semibold text-sm mb-2">
-                Post-Deployment Stabilisation
+                {t("process.callouts.c3t")}
               </h4>
               <p className="text-white/50 text-xs leading-relaxed">
-                Dedicated hypercare period after go-live with intensive monitoring, rapid response, and tuning support.
+                {t("process.callouts.c3d")}
               </p>
             </div>
 

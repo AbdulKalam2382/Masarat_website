@@ -42,7 +42,7 @@ export default function ThemeToggle() {
             exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <Moon className="w-5 h-5 text-brand-cyan group-hover:fill-brand-cyan transition-all" />
+            <Moon className="w-5 h-5 text-brand-blue-soft group-hover:fill-brand-blue-soft transition-all" />
           </motion.div>
         ) : (
           <motion.div

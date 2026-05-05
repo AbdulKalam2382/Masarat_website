@@ -201,7 +201,7 @@ export default function ServiceDetailTemplate({
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
                       className={cn(
-                        "flex items-center gap-6 p-6 rounded-2xl border border-[#E2EAF8] dark:border-[#1E3150] hover:bg-[#F8FAFC] dark:hover:bg-[#162236] transition-all",
+                        "flex items-center gap-6 p-6 rounded-2xl border border-[#E2EAF8] dark:border-[#1E3150] hover:bg-[#F8FAFC] dark:hover:bg-[#0D1B2A] transition-all",
                         isRTL ? "flex-row-reverse text-right" : "flex-row"
                       )}
                     >

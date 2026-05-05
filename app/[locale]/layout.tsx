@@ -5,6 +5,7 @@ import { SmoothScrollProvider } from "@/lib/lenis";
 import Preloader from "@/components/layout/Preloader";
 import LogoIntro from "@/components/ui/LogoIntro";
 import PageTransition from "@/components/layout/PageTransition";
+import GSAPSetup from "@/components/ui/GSAPSetup";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
@@ -145,9 +146,10 @@ export default async function RootLayout({
               <LogoIntro />
               {/* Global Orbs */}
               <div className={cn("orb bg-blue-600/20 top-[-100px]", isRtl ? "right-[-100px]" : "left-[-100px]")} />
-              <div className={cn("orb bg-[#C8963E]/10 bottom-[-100px] animation-delay-2000", isRtl ? "left-[-100px]" : "right-[-100px]")} />
+              <div className={cn("orb bg-[#1A56DB]/10 bottom-[-100px] animation-delay-2000", isRtl ? "left-[-100px]" : "right-[-100px]")} />
               
               <main className="relative min-h-screen">
+                <GSAPSetup />
                 <PageTransition>
                   {children}
                 </PageTransition>

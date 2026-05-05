@@ -8,7 +8,14 @@ import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/lib/LanguageContext";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DomainHeroAnimation from "@/components/ui/DomainHeroAnimation";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface SolutionDetailTemplateProps {
   slug: string;
@@ -49,90 +56,237 @@ export default function SolutionDetailTemplate({
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   const timelineSteps = [
-    { title: isRTL ? "التقييم والتخطيط" : "Assessment & Planning", brief: isRTL ? "فهم المتطلبات" : "Understanding requirements" },
-    { title: isRTL ? "الهندسة والتصميم" : "Architecture & Design", brief: isRTL ? "بناء المخطط" : "Building the blueprint" },
-    { title: isRTL ? "التنفيذ والتكامل" : "Implementation & Integration", brief: isRTL ? "النشر الفعلي" : "Actual deployment" },
-    { title: isRTL ? "الاختبار والنشر" : "Testing & Deployment", brief: isRTL ? "ضمان الجودة" : "Ensuring quality" },
-    { title: isRTL ? "العمليات والتحسين" : "Operations & Optimization", brief: isRTL ? "الدعم المستمر" : "Ongoing support" }
+    { title: t("solutions.detail.timeline.s1t"), brief: t("solutions.detail.timeline.s1d") },
+    { title: t("solutions.detail.timeline.s2t"), brief: t("solutions.detail.timeline.s2d") },
+    { title: t("solutions.detail.timeline.s3t"), brief: t("solutions.detail.timeline.s3d") },
+    { title: t("solutions.detail.timeline.s4t"), brief: t("solutions.detail.timeline.s4d") },
+    { title: t("solutions.detail.timeline.s5t"), brief: t("solutions.detail.timeline.s5d") }
   ];
+
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. STANDARD CINEMATIC ENTRANCES
+      gsap.utils.toArray("h1, h2, h3").forEach((heading: any) => {
+        gsap.from(heading, {
+          clipPath: "inset(100% 0% 0% 0%)",
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 90%",
+            end: "top 60%",
+            scrub: 0.3,
+          }
+        });
+      });
+
+      gsap.utils.toArray(".solution-card, .deliverable-item").forEach((card: any) => {
+        gsap.from(card, {
+          scale: 0.92,
+          opacity: 0,
+          y: 30,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 95%",
+            end: "top 70%",
+            scrub: 0.3,
+          }
+        });
+      });
+
+      gsap.utils.toArray("img").forEach((img: any) => {
+        if (img.closest('section')) {
+          gsap.from(img, {
+            scale: 1.05,
+            opacity: 0.5,
+            scrollTrigger: {
+              trigger: img,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.3,
+            }
+          });
+        }
+      });
+
+      // 2. DOMAIN SPECIFIC SCROLL ANIMATIONS
+      
+      // Digital Transformation: Alternating Side Slides
+      if (slug === "digital-transformation") {
+        gsap.utils.toArray(".deliverable-item").forEach((item: any, i: number) => {
+          gsap.from(item, {
+            x: i % 2 === 0 ? -100 : 100,
+            opacity: 0,
+            duration: 1,
+            scrollTrigger: {
+              trigger: item,
+              start: "top 90%",
+              end: "top 60%",
+              scrub: 0.3,
+            }
+          });
+        });
+      }
+
+      // AI & Data: Typewriter + Connection Lines
+      if (slug === "ai-data") {
+        gsap.utils.toArray(".deliverable-item").forEach((item: any) => {
+          const title = item.querySelector("h4");
+          if (title) {
+            gsap.from(title, {
+              width: 0,
+              duration: 1,
+              scrollTrigger: {
+                trigger: item,
+                start: "top 90%",
+                scrub: 0.3,
+              }
+            });
+          }
+        });
+      }
+
+      // Cybersecurity: Scanning Beam
+      if (slug === "cybersecurity") {
+        gsap.utils.toArray("section").forEach((section: any) => {
+          const beam = document.createElement("div");
+          beam.className = "absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-blue-soft/30 to-transparent pointer-events-none z-50";
+          section.style.position = "relative";
+          section.appendChild(beam);
+          
+          gsap.fromTo(beam, 
+            { top: "0%" }, 
+            { 
+              top: "100%", 
+              duration: 0.6,
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.3
+              }
+            }
+          );
+        });
+      }
+
+      // ELV & Smart Systems: Scaling Icons + Hub Connections
+      if (slug === "elv-smart-systems") {
+        gsap.utils.toArray(".deliverable-icon-box").forEach((icon: any) => {
+          gsap.from(icon, {
+            scale: 0,
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: icon,
+              start: "top 95%",
+              scrub: 0.3,
+            }
+          });
+        });
+      }
+
+      // Mission Critical: 3D Perspective Tilt
+      if (slug === "mission-critical") {
+        gsap.from(".deliverable-item", {
+          y: 80,
+          rotateX: 15,
+          opacity: 0,
+          stagger: 0.1,
+          transformPerspective: 800,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".deliverables-grid",
+            start: "top 75%",
+            end: "bottom 25%",
+            scrub: 0.3
+          }
+        });
+      }
+
+      // 3. HERO PINNING & SEQUENCING
+      const heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero-section-trigger",
+          start: "top top",
+          end: "+=150%", // Pin for 1.5x the screen height
+          pin: true,
+          scrub: 1,
+        }
+      });
+
+      // Text reveals as animation dismantles
+      heroTl.fromTo(".hero-text-content", 
+        { opacity: 0, y: 50 }, 
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      );
+
+      // 4. REFRESH
+      ScrollTrigger.refresh();
+    }, mainRef);
+
+    return () => ctx.revert();
+  }, [slug, isRTL]);
 
   return (
     <div className={cn(isRTL ? "font-cairo" : "font-inter")}>
       <Navbar />
-      <main className="bg-white dark:bg-brand-navy overflow-hidden">
+      <main ref={mainRef} className="bg-white dark:bg-brand-navy overflow-hidden">
         
         {/* SECTION 1: Hero - CHANGE 8 */}
-        <section ref={heroRef} className="relative h-screen flex items-center overflow-hidden bg-brand-navy">
-          <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
-            <Image
-              src={heroImage}
-              alt={name}
-              fill
-              className="object-cover opacity-60"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2A]/95 via-[#0D1B2A]/80 to-[#0D1B2A]/40" />
-          </motion.div>
+        <section ref={heroRef} className="hero-section-trigger relative h-screen flex items-center overflow-hidden bg-white dark:bg-brand-navy">
+          <div className="absolute inset-0 z-0 bg-dot-grid opacity-10 dark:opacity-20 pointer-events-none" />
 
-          <div className="absolute inset-0 z-10 bg-dot-grid opacity-40 pointer-events-none" />
+          {/* Domain Specific Hero Animation */}
+          <DomainHeroAnimation slug={slug} />
 
-          <div className="container max-w-7xl mx-auto px-6 relative z-20 pt-20">
+          <div className="hero-text-content container max-w-7xl mx-auto px-6 relative z-20 pt-20 opacity-0">
             {/* Breadcrumb */}
-            <motion.div 
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className={cn("flex items-center gap-2 text-white/40 text-[10px] font-black uppercase tracking-[0.3em] mb-12", isRTL && "flex-row-reverse")}
+            <div 
+              className={cn("flex items-center gap-2 text-brand-navy/40 dark:text-white/40 text-[10px] font-black uppercase tracking-[0.3em] mb-12", isRTL && "flex-row-reverse")}
             >
-              <Link href="/solutions" className="hover:text-brand-cyan transition-colors">{isRTL ? "الحلول" : "Solutions"}</Link>
+              <Link href="/solutions" className="hover:text-brand-blue-soft transition-colors">{t("nav.solutions")}</Link>
               {isRTL ? <ChevronLeft size={10} /> : <ChevronRight size={10} />}
-              <span className="text-white/80">{name}</span>
-            </motion.div>
+              <span className="text-brand-navy/80 dark:text-white/80">{name}</span>
+            </div>
 
             <div className={cn("max-w-4xl", isRTL ? "text-right" : "text-left")}>
-              <motion.span
-                initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="inline-block px-5 py-2 rounded-full bg-brand-blue/20 border border-brand-blue/30 text-brand-cyan text-[10px] font-black uppercase tracking-[0.3em] mb-8"
+              <span
+                className="inline-block px-5 py-2 rounded-full bg-brand-blue/20 border border-brand-blue/30 text-brand-blue-soft text-[10px] font-black uppercase tracking-[0.3em] mb-8"
               >
                 {category}
-              </motion.span>
+              </span>
               
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-8xl font-bold tracking-tighter text-white mb-8 font-outfit leading-[0.95]"
+              <h1 
+                className="text-5xl md:text-8xl font-bold tracking-tighter text-brand-navy dark:text-white mb-8 font-outfit leading-[0.95]"
               >
                 {name}
-              </motion.h1>
+              </h1>
               
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-lg md:text-xl text-white/60 font-light mb-12 max-w-xl leading-relaxed"
+              <p
+                className="text-lg md:text-xl text-brand-muted dark:text-white/60 font-light mb-12 max-w-xl leading-relaxed"
               >
                 {description}
-              </motion.p>
+              </p>
               
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+              <div
                 className={cn("flex flex-wrap gap-4", isRTL && "flex-row-reverse")}
               >
                 <Link 
                   href="/contact" 
-                  className="bg-brand-blue text-white px-10 py-5 rounded-full font-bold hover:bg-brand-cyan transition-all hover:scale-105 shadow-xl shadow-brand-blue/20 uppercase tracking-widest text-xs"
+                  className="bg-brand-blue text-white px-10 py-5 rounded-full font-bold hover:bg-brand-blue-soft transition-all hover:scale-105 shadow-xl shadow-brand-blue/20 uppercase tracking-widest text-xs"
                 >
-                  {isRTL ? "احجز استشارة" : "Schedule a Consultation"}
+                  {t("nav.cta")}
                 </Link>
                 <Link 
                   href="/contact" 
-                  className="bg-white/10 text-white border border-white/20 px-10 py-5 rounded-full font-bold hover:bg-white/20 transition-all uppercase tracking-widest text-xs backdrop-blur-md"
+                  className="bg-brand-surface dark:bg-white/10 text-brand-navy dark:text-white border border-brand-navy/10 dark:border-white/20 px-10 py-5 rounded-full font-bold hover:bg-brand-navy/5 dark:hover:bg-white/20 transition-all uppercase tracking-widest text-xs backdrop-blur-md"
                 >
-                  {isRTL ? "تحميل الملف" : "Download Overview"}
+                  {t("solutions.detail.download")}
                 </Link>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -145,31 +299,27 @@ export default function SolutionDetailTemplate({
                 {category}
               </span>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-brand-navy dark:text-white">
-                {isRTL ? "ما نقوم بتسليمه" : "What We Deliver"}
+                {t("solutions.detail.deliver_title")}
               </h2>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+ 
+            <div className="deliverables-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {deliverables.map((item, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
                   className={cn(
-                    "flex flex-col gap-6",
+                    "deliverable-item flex flex-col gap-6",
                     isRTL ? "items-end text-right" : "items-start text-left"
                   )}
                 >
-                  <div className="w-14 h-14 rounded-full bg-brand-blue text-white flex items-center justify-center shadow-lg shadow-brand-blue/20">
+                  <div className="deliverable-icon-box w-14 h-14 rounded-full bg-brand-blue text-white flex items-center justify-center shadow-lg shadow-brand-blue/20">
                     {item.icon}
                   </div>
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-bold text-brand-navy dark:text-white tracking-tight">{item.title}</h4>
+                  <div className="space-y-3 overflow-hidden">
+                    <h4 className="text-lg font-bold text-brand-navy dark:text-white tracking-tight whitespace-nowrap overflow-hidden origin-left">{item.title}</h4>
                     <p className="text-sm text-brand-muted dark:text-white/40 leading-relaxed font-medium">{item.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -179,17 +329,14 @@ export default function SolutionDetailTemplate({
         <section className="py-32 bg-brand-surface dark:bg-white/[0.02]">
           <div className="container max-w-7xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-brand-navy dark:text-white mb-20">
-              {isRTL ? "نهجنا" : "Our Approach"}
+              {t("solutions.detail.approach")}
             </h2>
 
             <div className="space-y-24">
               {approach.map((item, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="relative group max-w-3xl"
+                  className="approach-item relative group max-w-3xl"
                 >
                   <div className={cn(
                     "absolute -top-16 text-[100px] md:text-[140px] font-black text-brand-blue/[0.06] dark:text-white/[0.04] leading-none pointer-events-none select-none z-0 transition-all group-hover:scale-110",
@@ -205,7 +352,7 @@ export default function SolutionDetailTemplate({
                       {item.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -216,10 +363,10 @@ export default function SolutionDetailTemplate({
           <div className="container max-w-7xl mx-auto px-6">
             <div className="mb-20 text-center">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-brand-navy dark:text-white mb-6">
-                {isRTL ? "كيف نقوم بالتسليم" : "How We Deliver"}
+                {t("solutions.detail.how_deliver")}
               </h2>
               <p className="text-brand-muted dark:text-white/40 max-w-xl mx-auto">
-                {isRTL ? "نموذج التسليم المعتمد لدينا في الممارسة العملية." : "Our proven delivery model in practice."}
+                {t("solutions.detail.deliver_desc")}
               </p>
             </div>
 
@@ -230,13 +377,9 @@ export default function SolutionDetailTemplate({
               
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-6">
                 {timelineSteps.map((step, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex flex-col items-center text-center relative z-10"
+                    className="timeline-item flex flex-col items-center text-center relative z-10"
                   >
                     <div className="w-12 h-12 rounded-full bg-brand-blue text-white flex items-center justify-center font-bold mb-6 shadow-lg shadow-brand-blue/30 border-4 border-white dark:border-brand-navy group-hover:scale-110 transition-transform">
                       {i + 1}
@@ -247,7 +390,7 @@ export default function SolutionDetailTemplate({
                     <p className="text-[11px] text-brand-muted dark:text-white/40 font-medium">
                       {step.brief}
                     </p>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -264,9 +407,7 @@ export default function SolutionDetailTemplate({
           />
           <div className="absolute inset-0 bg-brand-navy/60 backdrop-blur-[2px] flex items-center justify-center p-6">
             <h3 className="text-xl md:text-3xl font-light text-white text-center max-w-3xl leading-relaxed">
-              {isRTL 
-                ? "يتم التسليم مع مسؤولية نقطة واحدة وقدرة تنفيذ مثبتة."
-                : "Delivered with single-point accountability and proven execution capability."}
+              {t("solutions.detail.ctabanner")}
             </h3>
           </div>
         </section>
@@ -281,18 +422,16 @@ export default function SolutionDetailTemplate({
         <section className="py-32 bg-brand-navy text-center">
           <div className="container max-w-4xl mx-auto px-6">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-outfit text-white mb-8">
-              {isRTL ? "هل أنت مستعد للبدء؟" : "Ready to get started?"}
+              {t("solutions.cta_title")}
             </h2>
             <p className="text-xl text-white/50 mb-12 font-light">
-              {isRTL 
-                ? "تحدث مع فريق الحلول لدينا حول متطلباتك المحددة."
-                : "Talk to our solutions team about your specific requirements."}
+              {t("solutions.cta_sub")}
             </p>
             <Link
               href="/contact"
-              className="inline-block px-12 py-5 bg-brand-blue text-white rounded-full font-bold text-sm uppercase tracking-widest hover:bg-brand-cyan hover:shadow-2xl hover:shadow-brand-cyan/20 transition-all"
+              className="inline-block px-12 py-5 bg-brand-blue text-white rounded-full font-bold text-sm uppercase tracking-widest hover:bg-brand-blue-soft hover:shadow-2xl hover:shadow-brand-blue-soft/20 transition-all"
             >
-              {isRTL ? "احجز استشارة" : "Schedule a Consultation"}
+              {t("nav.cta")}
             </Link>
           </div>
         </section>

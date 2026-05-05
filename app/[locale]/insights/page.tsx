@@ -32,9 +32,9 @@ export default function InsightsPage() {
       case "Cybersecurity":
         return <Shield size={28} className="text-brand-blue" />;
       case "Cloud":
-        return <Cloud size={28} className="text-brand-cyan" />;
+        return <Cloud size={28} className="text-brand-blue-soft" />;
       case "AI":
-        return <Brain size={28} className="text-brand-cyan" />;
+        return <Brain size={28} className="text-brand-blue-soft" />;
       default:
         return <BookOpen size={28} className="text-brand-blue" />;
     }
@@ -64,7 +64,7 @@ export default function InsightsPage() {
           
           {/* Glow Orbs */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-brand-blue opacity-[0.07] blur-[140px] pointer-events-none" />
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-cyan opacity-[0.04] blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-blue-soft opacity-[0.04] blur-[100px] pointer-events-none" />
 
           <div className="container max-w-7xl mx-auto px-6 relative z-20">
             <motion.div
@@ -73,7 +73,7 @@ export default function InsightsPage() {
               transition={{ duration: 0.8 }}
               className="max-w-4xl"
             >
-              <span className="section-kicker text-brand-cyan mb-6">
+              <span className="section-kicker text-brand-blue-soft mb-6">
                 {t("insights_page.kicker")}
               </span>
               <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 font-outfit uppercase text-white leading-[0.95]">
@@ -98,7 +98,7 @@ export default function InsightsPage() {
                     "px-8 py-5 text-[11px] font-black uppercase tracking-[0.2em]",
                     "border-b-2 transition-all duration-300",
                     activeFilter === filter.id
-                      ? "border-brand-blue text-brand-blue dark:text-brand-cyan dark:border-brand-cyan"
+                      ? "border-brand-blue text-brand-blue dark:text-brand-blue-soft dark:border-brand-blue-soft"
                       : "border-transparent text-brand-muted hover:text-brand-navy dark:hover:text-white"
                   )}
                 >
@@ -139,11 +139,11 @@ export default function InsightsPage() {
                       transition={{ delay: i * 0.1 }}
                       className="group relative flex flex-col bg-white dark:bg-white/5 rounded-[2rem] border border-brand-border dark:border-white/10 overflow-hidden hover:border-brand-blue/50 hover:shadow-2xl hover:shadow-brand-blue/5 transition-all duration-500"
                     >
-                      <div className="h-[3px] w-full bg-gradient-to-r from-brand-blue to-brand-cyan" />
+                      <div className="h-[3px] w-full bg-gradient-to-r from-brand-blue to-brand-blue-soft" />
                       
                       <div className="p-8 flex flex-col h-full">
                         <div className={cn("flex items-center justify-between mb-8", isRTL && "flex-row-reverse")}>
-                          <span className="text-[10px] font-black tracking-[0.25em] uppercase text-brand-cyan">
+                          <span className="text-[10px] font-black tracking-[0.25em] uppercase text-brand-blue-soft">
                             {categoryLabel}
                           </span>
                           <span className="text-[11px] font-bold text-brand-muted dark:text-white/30 uppercase tracking-widest">
@@ -156,7 +156,7 @@ export default function InsightsPage() {
                         </div>
 
                         <Link href={`/insights/${article.slug}`} className="flex-1">
-                          <h3 className="text-2xl font-bold tracking-tight text-brand-navy dark:text-white mb-4 leading-tight group-hover:text-brand-blue dark:group-hover:text-brand-cyan transition-colors">
+                          <h3 className="text-2xl font-bold tracking-tight text-brand-navy dark:text-white mb-4 leading-tight group-hover:text-brand-blue dark:group-hover:text-brand-blue-soft transition-colors">
                             {locale.title}
                           </h3>
                         </Link>
@@ -171,7 +171,7 @@ export default function InsightsPage() {
                           </span>
                           <Link 
                             href={`/insights/${article.slug}`} 
-                            className={cn("flex items-center gap-2 text-xs font-black text-brand-blue dark:text-brand-cyan uppercase tracking-widest group/btn", isRTL && "flex-row-reverse")}
+                            className={cn("flex items-center gap-2 text-xs font-black text-brand-blue dark:text-brand-blue-soft uppercase tracking-widest group/btn", isRTL && "flex-row-reverse")}
                           >
                             {isRTL ? "اقرأ" : "Read"}
                             <ArrowRight size={14} className={cn("group-hover/btn:translate-x-1 transition-transform", isRTL && "rotate-180 group-hover/btn:-translate-x-1")} />

@@ -29,7 +29,7 @@ export default function Navbar() {
 
   const isHomepage = pathname === "/" || pathname === "";
   const isAtTop = !isScrolled;
-  const isOverDark = isHomepage && isAtTop;
+  const isOverDark = isHomepage && isAtTop && isDark;
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
@@ -58,11 +58,11 @@ export default function Navbar() {
       name: t("nav.solutions"),
       href: "/solutions",
       dropdown: [
-        { title: t("nav.dropdowns.solutions.enterprise.title"), brief: t("nav.dropdowns.solutions.enterprise.brief"), href: "/solutions/digital-transformation", icon: LayoutDashboard },
         { title: t("nav.dropdowns.solutions.ai_data.title"), brief: t("nav.dropdowns.solutions.ai_data.brief"), href: "/solutions/ai-data", icon: Brain },
         { title: t("nav.dropdowns.solutions.cybersecurity.title"), brief: t("nav.dropdowns.solutions.cybersecurity.brief"), href: "/solutions/cybersecurity", icon: Shield },
         { title: t("nav.dropdowns.solutions.elv.title"), brief: t("nav.dropdowns.solutions.elv.brief"), href: "/solutions/elv-smart-systems", icon: Building2 },
         { title: t("nav.dropdowns.solutions.infrastructure.title"), brief: t("nav.dropdowns.solutions.infrastructure.brief"), href: "/solutions/mission-critical", icon: Database },
+        { title: t("nav.dropdowns.solutions.enterprise.title"), brief: t("nav.dropdowns.solutions.enterprise.brief"), href: "/solutions/digital-transformation", icon: LayoutDashboard },
       ]
     },
     {
@@ -78,19 +78,14 @@ export default function Navbar() {
     {
       id: "career",
       name: t("nav.career"),
-      href: "/career",
-      dropdown: [
-        { title: t("nav.dropdowns.career.why_masarat.title"), brief: t("nav.dropdowns.career.why_masarat.brief"), href: "/career#why", icon: Target },
-        { title: t("nav.dropdowns.career.benefits.title"), brief: t("nav.dropdowns.career.benefits.brief"), href: "/career#benefits", icon: TrendingUp },
-        { title: t("nav.dropdowns.career.positions.title"), brief: t("nav.dropdowns.career.positions.brief"), href: "/career#positions", icon: MapPin },
-      ]
+      href: "/career"
     }
   ];
 
   const linkColor = (isActive: boolean) => {
     if (isOverDark) return isActive ? "text-white" : "text-white/80 hover:text-white";
-    if (isActive) return "text-[#1A56DB] dark:text-[#00B4D8]";
-    return "text-[#0D1B2A] dark:text-[#F5F5F7] hover:text-[#1A56DB] dark:hover:text-[#00B4D8]";
+    if (isActive) return "text-[#1A56DB] dark:text-[#3B82F6]";
+    return "text-[#0D1B2A] dark:text-[#F5F5F7] hover:text-[#1A56DB] dark:hover:text-[#3B82F6]";
   };
 
   const ctaStyle = isOverDark
@@ -147,16 +142,18 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-1 text-[15px] font-semibold transition-all duration-300 py-4",
+                      "flex items-center gap-1 text-[15px] font-semibold transition-all duration-300 py-4 hover:opacity-80",
                       linkColor(pathname.includes(item.href))
                     )}
                   >
                     {item.name}
-                    <ChevronDown size={14} className={cn("transition-transform duration-300", activeDropdown === item.id && "rotate-180")} />
+                    {item.dropdown && (
+                      <ChevronDown size={14} className={cn("transition-transform duration-300", activeDropdown === item.id && "rotate-180")} />
+                    )}
                   </Link>
 
                   <AnimatePresence>
-                    {activeDropdown === item.id && (
+                    {item.dropdown && activeDropdown === item.id && (
                       <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -172,18 +169,13 @@ export default function Navbar() {
                             <Link 
                               key={subItem.href}
                               href={subItem.href}
-                              className="group flex items-start gap-3 p-3 rounded-xl hover:bg-brand-surface dark:hover:bg-white/5 transition-all duration-200"
+                              className="group block p-3 rounded-xl hover:bg-brand-surface dark:hover:bg-white/5 transition-all duration-200"
                             >
-                              <div className="w-9 h-9 rounded-lg bg-brand-blue/10 dark:bg-brand-blue/20 border border-brand-blue/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-brand-blue group-hover:text-white transition-all">
-                                <subItem.icon size={16} className="text-brand-blue group-hover:text-white" />
+                              <div className="text-[13px] font-bold text-brand-navy dark:text-white tracking-tight group-hover:text-brand-blue transition-colors">
+                                {subItem.title}
                               </div>
-                              <div>
-                                <div className="text-[13px] font-bold text-brand-navy dark:text-white tracking-tight">
-                                  {subItem.title}
-                                </div>
-                                <div className="text-[11px] text-brand-muted dark:text-white/40 mt-0.5 leading-relaxed font-medium">
-                                  {subItem.brief}
-                                </div>
+                              <div className="text-[11px] text-brand-muted dark:text-white/40 mt-0.5 leading-relaxed font-medium">
+                                {subItem.brief}
                               </div>
                             </Link>
                           ))}
@@ -220,7 +212,7 @@ export default function Navbar() {
                   ? "text-white hover:bg-white/10" 
                   : isDark 
                     ? "text-white hover:bg-white/5" 
-                    : "text-brand-navy hover:bg-black/5"
+                    : "text-brand-navy hover:bg-[#0D1B2A]/5"
               )}
               aria-label="Open Menu"
             >
@@ -256,7 +248,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 text-brand-navy dark:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors"
+                  className="p-2 text-brand-navy dark:text-white hover:bg-[#0D1B2A]/5 dark:hover:bg-white/5 rounded-xl transition-colors"
                   aria-label="Close Menu"
                 >
                   <X size={28} />
@@ -266,37 +258,49 @@ export default function Navbar() {
               <div className="flex-1 overflow-y-auto p-6 space-y-8 pb-32">
                 {navItems.map((item) => (
                   <div key={item.id} className="space-y-5">
-                    <div className={cn(
-                      "text-[11px] font-black uppercase tracking-[0.3em] text-brand-blue",
-                      isRTL && "text-right"
-                    )}>
-                      {item.name}
-                    </div>
-                    <div className="grid grid-cols-1 gap-4">
-                      {item.dropdown.map((subItem) => (
-                        <Link 
-                          key={subItem.href}
-                          href={subItem.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className={cn(
-                            "flex items-start gap-4 p-5 bg-brand-surface dark:bg-white/5 rounded-[1.5rem] border border-black/5 dark:border-white/5 active:scale-[0.98] transition-transform",
-                            isRTL && "flex-row-reverse text-right"
-                          )}
-                        >
-                          <div className="w-12 h-12 rounded-2xl bg-brand-blue/10 dark:bg-brand-blue/20 flex items-center justify-center flex-shrink-0">
-                            <subItem.icon size={22} className="text-brand-blue" />
-                          </div>
-                          <div className="space-y-1">
-                            <div className="text-[15px] font-bold text-brand-navy dark:text-white">
-                              {subItem.title}
-                            </div>
-                            <div className="text-[12px] text-brand-muted dark:text-white/40 leading-relaxed font-medium">
-                              {subItem.brief}
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
+                    {item.dropdown ? (
+                      <>
+                        <div className={cn(
+                          "text-[11px] font-black uppercase tracking-[0.3em] text-brand-blue",
+                          isRTL && "text-right"
+                        )}>
+                          {item.name}
+                        </div>
+                        <div className="grid grid-cols-1 gap-4">
+                          {item.dropdown.map((subItem) => (
+                            <Link 
+                              key={subItem.href}
+                              href={subItem.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className={cn(
+                                "block p-5 bg-brand-surface dark:bg-white/5 rounded-[1.5rem] border border-black/5 dark:border-white/5 active:scale-[0.98] transition-transform",
+                                isRTL && "text-right"
+                              )}
+                            >
+                              <div className="space-y-1">
+                                <div className="text-[15px] font-bold text-brand-navy dark:text-white">
+                                  {subItem.title}
+                                </div>
+                                <div className="text-[12px] text-brand-muted dark:text-white/40 leading-relaxed font-medium">
+                                  {subItem.brief}
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <Link 
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={cn(
+                          "block text-[11px] font-black uppercase tracking-[0.3em] text-brand-blue",
+                          isRTL && "text-right"
+                        )}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
                   </div>
                 ))}
               </div>

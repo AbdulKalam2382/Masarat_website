@@ -15,26 +15,53 @@ import {
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function SolutionsPage() {
   const { t, isRTL } = useLanguage();
+  const pinnedSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    let mm = gsap.matchMedia(pinnedSectionRef);
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const isMobile = window.innerWidth < 768;
+      const xOffset = isMobile ? 150 : 300;
+
+      // Explicitly set willChange
+      gsap.set(".solution-card", { willChange: "transform" });
+
+      // Card entry animations
+      gsap.fromTo(
+        ".solution-card",
+        { x: xOffset, opacity: 0, backgroundColor: "#DBEAFE" },
+        {
+          x: 0,
+          opacity: 1,
+          backgroundColor: "#ffffff",
+          stagger: 0.1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: pinnedSectionRef.current,
+            start: "top top",
+            end: "+=600",
+            pin: true,
+            scrub: 0.3, // Changed from 1
+          }
+        }
+      );
+    });
+
+    return () => mm.revert();
+  }, []);
 
   const solutions = [
-    {
-      domain: isRTL ? "مؤسسي" : "Enterprise",
-      title: isRTL ? "التحول المؤسسي والمنصات الرقمية" : "Enterprise Transformation & Digital Platforms",
-      slug: "digital-transformation",
-      icon: LayoutDashboard,
-      keyPoints: isRTL ? [
-        "منصات المؤسسات للحوكمة",
-        "أتمتة العمليات ورقمنة سير العمل",
-        "تكامل الأنظمة عبر وظائف الأعمال"
-      ] : [
-        "Enterprise platforms for governance",
-        "Process automation & workflow digitization",
-        "System integration across business functions"
-      ]
-    },
     {
       domain: isRTL ? "ذكاء" : "Intelligence",
       title: isRTL ? "الذكاء الاصطناعي والبيانات والأنظمة الذكية" : "AI, Data & Intelligent Systems",
@@ -94,7 +121,22 @@ export default function SolutionsPage() {
         "Tier III aligned infrastructure",
         "Live upgrades with minimal downtime"
       ]
-    }
+    },
+    {
+      domain: isRTL ? "مؤسسي" : "Enterprise",
+      title: isRTL ? "التحول المؤسسي والمنصات الرقمية" : "Enterprise Transformation & Digital Platforms",
+      slug: "digital-transformation",
+      icon: LayoutDashboard,
+      keyPoints: isRTL ? [
+        "منصات المؤسسات للحوكمة",
+        "أتمتة العمليات ورقمنة سير العمل",
+        "تكامل الأنظمة عبر وظائف الأعمال"
+      ] : [
+        "Enterprise platforms for governance",
+        "Process automation & workflow digitization",
+        "System integration across business functions"
+      ]
+    },
   ];
 
   return (
@@ -102,25 +144,13 @@ export default function SolutionsPage() {
       <Navbar />
       <main>
         {/* HERO SECTION - CHANGE 7 + CHANGE 2 Treatments */}
-        <section className="relative min-h-[60vh] flex items-center pt-[100px] overflow-hidden bg-brand-navy">
-          {/* Background Image with Overlay */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=90&w=1920&auto=format&fit=crop"
-              alt="Masarat Solutions"
-              fill
-              className="object-cover opacity-40"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2A]/95 via-[#0D1B2A]/80 to-[#0D1B2A]/40" />
-          </div>
-
-          {/* Animated Dot Grid */}
-          <div className="absolute inset-0 z-10 bg-dot-grid opacity-60 pointer-events-none" />
+        <section className="relative min-h-[60vh] flex items-center pt-[100px] overflow-hidden bg-white dark:bg-brand-navy">
+          {/* Subtle Dot Grid Background */}
+          <div className="absolute inset-0 z-0 bg-dot-grid opacity-10 dark:opacity-20 pointer-events-none" />
           
           {/* Glow Orbs */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-brand-blue opacity-[0.07] blur-[140px] pointer-events-none" />
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-cyan opacity-[0.04] blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-blue-soft opacity-[0.04] blur-[100px] pointer-events-none" />
 
           <div className="container max-w-7xl mx-auto px-6 relative z-20">
             <motion.div
@@ -129,13 +159,13 @@ export default function SolutionsPage() {
               transition={{ duration: 0.8 }}
               className="max-w-4xl"
             >
-              <span className="section-kicker text-brand-cyan mb-6">
+              <span className="section-kicker text-brand-blue mb-6">
                 {isRTL ? "حلول متكاملة" : "Integrated Solutions"}
               </span>
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 font-outfit uppercase text-white leading-[0.95]">
+              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 font-outfit uppercase text-brand-navy dark:text-white leading-[0.95]">
                 {isRTL ? "حلول متكاملة." : "Integrated Solutions."}
               </h1>
-              <p className="text-xl md:text-2xl text-white/60 font-light max-w-2xl leading-relaxed">
+              <p className="text-xl md:text-2xl text-brand-muted dark:text-white/60 font-light max-w-2xl leading-relaxed">
                 {isRTL 
                   ? "خمس قدرات أساسية. شريك واحد مسؤول."
                   : "Five capabilities. One accountable partner."}
@@ -145,7 +175,7 @@ export default function SolutionsPage() {
         </section>
 
         {/* SOLUTIONS GRID - CHANGE 7 */}
-        <section className="relative py-32 bg-brand-surface overflow-hidden">
+        <section ref={pinnedSectionRef} className="relative py-32 bg-brand-surface overflow-hidden">
           <div className="absolute inset-0 bg-diagonal-lines pointer-events-none opacity-50" />
           
           <div className="container max-w-7xl mx-auto px-6 relative z-10">
@@ -165,20 +195,16 @@ export default function SolutionsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {solutions.map((solution, i) => (
-                <motion.div
+                <div
                   key={solution.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group relative rounded-2xl overflow-hidden border border-[#E2EAF8] dark:border-[#1E3150] bg-white dark:bg-[#0D1B2A] hover:border-[#1A56DB]/50 hover:shadow-2xl hover:shadow-[#1A56DB]/8 transition-all duration-300 flex flex-col"
+                  className="solution-card group relative rounded-2xl overflow-hidden border border-[#E2EAF8] dark:border-[#1E3150] bg-white dark:bg-[#0D1B2A] hover:border-[#1A56DB]/50 hover:shadow-2xl hover:shadow-[#1A56DB]/8 transition-all duration-300 flex flex-col"
                 >
                   {/* Top accent bar */}
-                  <div className="h-[3px] w-full bg-gradient-to-r from-brand-blue to-brand-cyan" />
+                  <div className="h-[3px] w-full bg-[#1A56DB]" />
                   
                   <div className="p-8 flex flex-col h-full">
                     {/* Domain tag */}
-                    <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-brand-cyan mb-6 block">
+                    <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-brand-blue-soft mb-6 block">
                       {solution.domain}
                     </span>
                     
@@ -196,7 +222,7 @@ export default function SolutionsPage() {
                     <ul className="space-y-4 mb-10 flex-1">
                       {solution.keyPoints.map((point, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-[13px] text-brand-muted leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan mt-1.5 flex-shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-blue-soft mt-1.5 flex-shrink-0" />
                           {point}
                         </li>
                       ))}
@@ -223,7 +249,7 @@ export default function SolutionsPage() {
                       </div>
                     </Link>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

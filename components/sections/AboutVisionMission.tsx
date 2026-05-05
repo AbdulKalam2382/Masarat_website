@@ -55,7 +55,7 @@ export default function AboutVisionMission() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <span className="text-[10px] font-black tracking-[0.3em] text-brand-cyan uppercase">
+            <span className="text-[10px] font-black tracking-[0.3em] text-brand-blue-soft uppercase">
               {t('home.vision_eyebrow')}
             </span>
             
@@ -76,7 +76,7 @@ export default function AboutVisionMission() {
               whileInView={{ width: 80 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="h-1 bg-brand-cyan mx-auto rounded-full"
+              className="h-1 bg-brand-blue-soft mx-auto rounded-full"
             />
           </motion.div>
         </div>
@@ -109,7 +109,7 @@ export default function AboutVisionMission() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <span className="text-[10px] font-black tracking-[0.3em] text-brand-cyan uppercase">
+            <span className="text-[10px] font-black tracking-[0.3em] text-brand-blue-soft uppercase">
               {t('home.mission_eyebrow')}
             </span>
             
@@ -125,7 +125,7 @@ export default function AboutVisionMission() {
               whileInView={{ width: 80 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="h-1 bg-brand-cyan mx-auto rounded-full"
+              className="h-1 bg-brand-blue-soft mx-auto rounded-full"
             />
           </motion.div>
         </div>

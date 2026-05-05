@@ -44,8 +44,8 @@ function LogoTile({ item }: { item: LogoItem }) {
         transition: { duration: 0.3 }
       }}
       className={cn(
-        "group relative h-[100px] p-6 bg-white dark:bg-[#162236] border-r-[0.5px] border-b-[0.5px] border-brand-border dark:border-[#1E3150] flex items-center justify-center transition-all duration-300",
-        "hover:bg-[#F0F6FF] dark:hover:bg-[#1A2744] hover:border-brand-blue hover:shadow-xl hover:shadow-brand-blue/10"
+        "group relative h-[100px] p-6 bg-white dark:bg-[#0D1B2A] border-r-[0.5px] border-b-[0.5px] border-brand-border dark:border-[#1E3150] flex items-center justify-center transition-all duration-300",
+        "hover:bg-[#F0F6FF] dark:hover:bg-[#122040] hover:border-brand-blue hover:shadow-xl hover:shadow-brand-blue/10"
       )}
     >
       {/* Selection background logic */}

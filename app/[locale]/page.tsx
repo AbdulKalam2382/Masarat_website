@@ -203,7 +203,7 @@ export default function Home() {
               )}
             >
               <div className="flex flex-col gap-4 max-w-xl">
-                <span className={cn("section-kicker text-brand-cyan", isRTL ? "flex-row-reverse" : "")}>
+                <span className={cn("section-kicker text-brand-blue-soft", isRTL ? "flex-row-reverse" : "")}>
                   {t("contact_page.kicker")}
                 </span>
                 <h2 className="text-4xl md:text-6xl font-bold tracking-tighter font-outfit text-white leading-[1.05]">
